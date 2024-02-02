@@ -21,4 +21,6 @@ public class Image extends BaseEntity{
     private String storeFilename;
 
     private String imageUrl;
+
+    private boolean deleted = Boolean.FALSE;
 }

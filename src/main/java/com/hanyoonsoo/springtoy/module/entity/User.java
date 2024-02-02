@@ -4,9 +4,16 @@ import com.hanyoonsoo.springtoy.module.constants.Authority;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
+@SQLDelete(sql = "UPDATE user SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class User extends BaseEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +35,13 @@ public class User extends BaseEntity{
     @Embedded
     private Address address;
 
-    private Boolean isVerify;
+    private boolean isVerify = Boolean.FALSE;
 
+    private boolean deleted = Boolean.FALSE;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Image> images = new ArrayList<>();
 }
