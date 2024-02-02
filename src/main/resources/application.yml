@@ -4,6 +4,9 @@ spring: #띄어쓰기 없음
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  redis:
+    host: localhost
+    port: 6379
 
   jpa: #띄어쓰기 2칸
     hibernate: #띄어쓰기 4칸

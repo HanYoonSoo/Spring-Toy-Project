@@ -44,6 +44,10 @@ dependencies {
     // JUnit5
     testImplementation("org.junit.platform:junit-platform-launcher:1.5.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+
+
+    // Redis 추가
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('bootBuildImage') {
