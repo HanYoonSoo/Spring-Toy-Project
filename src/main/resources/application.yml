@@ -20,3 +20,8 @@ spring: #띄어쓰기 없음
 logging.level: #띄어쓰기 없음
   org.hibernate.SQL: debug #띄어쓰기 2칸
   org.hibernate.type: trace #띄어쓰기 2칸
+
+jwt:
+  secret-key: a2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbQ==
+  accessToken-validity-in-seconds: 1800
+  refreshToken-validity-in-seconds: 3600
