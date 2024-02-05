@@ -1,5 +1,7 @@
 package com.hanyoonsoo.springtoy;
 
+import com.hanyoonsoo.springtoy.module.constants.Authority;
+import com.hanyoonsoo.springtoy.module.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

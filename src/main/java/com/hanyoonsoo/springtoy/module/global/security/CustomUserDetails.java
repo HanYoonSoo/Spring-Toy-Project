@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.module.global.security;
 
+import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,24 +18,24 @@ public class CustomUserDetails extends User implements UserDetails {
 
     private Long id;
     private String email;
-    private String role;
+    private String role_str;
     private String password;
 
     private CustomUserDetails(User user){
         this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.role = user.getRole().name();
+        this.role_str = user.getRole().toString();
     }
 
     private CustomUserDetails(String email, String role){
         this.email = email;
-        this.role = role;
+        this.role_str = role;
     }
 
     private CustomUserDetails(String email, String role, String password) {
         this.email = email;
-        this.role = role;
+        this.role_str = role;
         this.password = password;
     }
 
@@ -52,7 +53,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return CustomAuthorityUtils.createAuthorities(role);
+        return CustomAuthorityUtils.createAuthorities(role_str);
     }
 
     @Override

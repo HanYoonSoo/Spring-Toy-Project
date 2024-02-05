@@ -8,6 +8,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,9 +42,11 @@ public class JwtTokenProvider {
     @Value("${jwt.secret-key}")
     private String secretKey;
 
+    @Getter
     @Value("${jwt.accessToken-validity-in-seconds}")
     private long accessTokenValidityInSeconds;
 
+    @Getter
     @Value("${jwt.refreshToken-validity-in-seconds}")
     private long refreshTokenValidityInSeconds;
 
@@ -63,9 +66,8 @@ public class JwtTokenProvider {
         Map<String, Object> claims = new HashMap<>();
         claims.put(AUTHORITIES_KEY, customUserDetails.getRole());
 
-        long now = (new Date()).getTime();
-        Date accessValidity = new Date(now + this.accessTokenValidityInSeconds);
-        Date refreshValidity = new Date(now + this.refreshTokenValidityInSeconds);
+        Date accessValidity = getTokenValidityInSeconds(accessTokenValidityInSeconds);
+        Date refreshValidity = getTokenValidityInSeconds(refreshTokenValidityInSeconds);
 
         // AccessToken 생성
         String accessToken = Jwts.builder()
@@ -91,6 +93,11 @@ public class JwtTokenProvider {
                 .refreshToken(refreshToken)
                 .accessTokenExpiresIn(accessTokenValidityInSeconds)
                 .build();
+    }
+
+    public Date getTokenValidityInSeconds(long tokenValidityInSeconds) {
+        long now = (new Date()).getTime();
+        return new Date(now + tokenValidityInSeconds);
     }
 
     // JWT 토큰을 복호화하여 토큰에 들어있는 정보를 꺼냄
