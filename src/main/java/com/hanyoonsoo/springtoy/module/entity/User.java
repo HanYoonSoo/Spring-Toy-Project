@@ -1,11 +1,13 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
 import com.hanyoonsoo.springtoy.module.constants.Authority;
+import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,4 +47,17 @@ public class User extends BaseEntity{
 
     @OneToMany(mappedBy = "user")
     private List<Image> images = new ArrayList<>();
+
+
+    //==DTO 활용 유저 생성 메서드==//
+    public static User createUserByDto(UserDto.SignUp signUpDto) {
+        User user = new User();
+        user.setEmail(signUpDto.getEmail());
+        user.setName(signUpDto.getName());
+        user.setNickName(signUpDto.getNickname());
+        user.setRole(Authority.ROLE_USER);
+        user.setAddress(signUpDto.getAddress());
+
+        return user;
+    }
 }

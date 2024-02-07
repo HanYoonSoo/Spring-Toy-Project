@@ -1,7 +1,9 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -15,6 +17,7 @@ import java.util.List;
 @Getter @Setter
 @SQLDelete(sql = "UPDATE order SET deleted = true WHERE id = ?")
 @Where(clause = "deleted = false")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "orders")
 public class Order extends BaseEntity {
 

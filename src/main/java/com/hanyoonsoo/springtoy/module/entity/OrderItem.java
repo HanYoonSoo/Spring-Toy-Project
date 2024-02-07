@@ -2,7 +2,9 @@ package com.hanyoonsoo.springtoy.module.entity;
 
 import com.hanyoonsoo.springtoy.module.entity.item.Item;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -11,6 +13,7 @@ import org.hibernate.annotations.Where;
 @Getter @Setter
 @SQLDelete(sql = "UPDATE orderitem SET deleted = true WHERE id = ?")
 @Where(clause = "deleted = false")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
