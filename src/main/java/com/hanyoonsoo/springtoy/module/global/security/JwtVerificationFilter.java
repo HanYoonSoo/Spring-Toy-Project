@@ -41,6 +41,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
         try {
             String accessToken = jwtTokenProvider.resolveAccessToken(request);
+            System.out.println("access Token: " + accessToken);
             if (StringUtils.hasText(accessToken) && doNotLogout(accessToken)
                     && jwtTokenProvider.validateToken(accessToken, response)) {
                 setAuthenticationToContext(accessToken);

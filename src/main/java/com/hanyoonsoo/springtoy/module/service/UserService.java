@@ -41,4 +41,8 @@ public class UserService {
     public UserDto.Response findMemberByEmail(String email) {
         return new UserDto.Response(userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new));
     }
+
+    public void deleteUser(String email) {
+        userRepository.deleteByEmail(email);
+    }
 }

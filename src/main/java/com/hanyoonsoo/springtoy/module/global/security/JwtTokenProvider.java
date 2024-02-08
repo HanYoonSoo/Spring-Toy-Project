@@ -72,7 +72,7 @@ public class JwtTokenProvider {
         // AccessToken 생성
         String accessToken = Jwts.builder()
                 .setClaims(claims)
-                .setSubject(customUserDetails.getEmail())
+                .setSubject(customUserDetails.getUsername())
                 .setExpiration(accessValidity)
                 .setIssuedAt(Calendar.getInstance().getTime())
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -80,7 +80,7 @@ public class JwtTokenProvider {
 
         // RefreshToken 생성
         String refreshToken = Jwts.builder()
-                .setSubject(customUserDetails.getEmail())
+                .setSubject(customUserDetails.getUsername())
                 .setIssuedAt(Calendar.getInstance().getTime())
                 .setExpiration(refreshValidity)
                 .signWith(key, SignatureAlgorithm.HS256)
