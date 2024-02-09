@@ -64,7 +64,7 @@ public class JwtTokenProvider {
     public TokenDto generateToken(CustomUserDetails customUserDetails){
         // 권한 가져오기
         Map<String, Object> claims = new HashMap<>();
-        claims.put(AUTHORITIES_KEY, customUserDetails.getRole());
+        claims.put(AUTHORITIES_KEY, customUserDetails.getRole_str());
 
         Date accessValidity = getTokenValidityInSeconds(accessTokenValidityInSeconds);
         Date refreshValidity = getTokenValidityInSeconds(refreshTokenValidityInSeconds);
@@ -104,15 +104,16 @@ public class JwtTokenProvider {
     public Authentication getAuthentication(String accessToken){
         // 토큰 복호화
         Claims claims = parseClaims(accessToken);
-
         if(claims.get(AUTHORITIES_KEY) == null){
             throw new RuntimeException("권한 정보가 없는 토큰입니다.");
         }
 
         String authority = claims.get(AUTHORITIES_KEY).toString();
 
+
         CustomUserDetails customUserDetails = CustomUserDetails.of(
                 claims.getSubject(), authority);
+
 
         log.info("# AuthUser.getRoles 권한 체크 = {}", customUserDetails.getAuthorities().toString());
 
@@ -137,7 +138,6 @@ public class JwtTokenProvider {
             log.info("JWT claims string is empty");
             log.trace("JWT claims string is empty trace = {}", e);
         }
-
         return true;
     }
 

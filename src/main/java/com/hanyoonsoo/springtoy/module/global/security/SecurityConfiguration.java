@@ -12,6 +12,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.*;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -29,7 +31,7 @@ public class SecurityConfiguration {
     private final UserService userService;
     private final AES128Config aes128Config;
     private final RedisService redisService;
-
+    private final PasswordEncoder passwordEncoder;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults());
@@ -70,12 +72,17 @@ public class SecurityConfiguration {
             JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenProvider, redisService);
 
             jwtAuthenticationFilter.setFilterProcessesUrl("/auth/login");
-//            jwtAuthenticationFilter.setAuthenticationSuccessHandler(new LoginSuccessHandler());
-//            jwtAuthenticationFilter.setAuthenticationFailureHandler(new LoginFailurHandler());
+            jwtAuthenticationFilter.setAuthenticationSuccessHandler(new LoginSuccessHandler());
+            jwtAuthenticationFilter.setAuthenticationFailureHandler(new LoginFailurHandler());
 
             builder
                     .addFilter(jwtAuthenticationFilter)
                     .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);
         }
+    }
+
+    @Bean
+    public static BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

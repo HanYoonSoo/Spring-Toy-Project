@@ -57,7 +57,7 @@ public class User extends BaseEntity{
         user.setNickName(signUpDto.getNickname());
         user.setRole(Authority.ROLE_USER);
         user.setAddress(signUpDto.getAddress());
-
+        user.setPassword(signUpDto.getPassword());
         return user;
     }
 }

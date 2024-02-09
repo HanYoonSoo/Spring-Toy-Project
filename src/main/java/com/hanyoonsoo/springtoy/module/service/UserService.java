@@ -1,14 +1,12 @@
 package com.hanyoonsoo.springtoy.module.service;
 
+import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.EncryptHelper;
 import com.hanyoonsoo.springtoy.module.repository.UserRepository;
-import jakarta.validation.constraints.NotNull;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import reactor.util.annotation.NonNullApi;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -31,15 +29,22 @@ public class UserService {
         String encPassword = encryptHelper.encrypt(rawPassword);
         signUpDto.setPassword(encPassword);
 
+        System.out.println("UserService: " + rawPassword);
+        System.out.println("UserService: " + encPassword);
         User newUser = User.createUserByDto(signUpDto);
 
+        newUser.setRole(Authority.ROLE_USER);
         userRepository.save(newUser);
 
         return new UserDto.Response(newUser);
     }
 
-    public UserDto.Response findMemberByEmail(String email) {
+    public UserDto.Response userDtoResponse(String email) {
         return new UserDto.Response(userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new));
+    }
+
+    public User findUserByEmail(String email){
+        return userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new);
     }
 
     public void deleteUser(String email) {

@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 @Disabled // 해당 Annotation이 지정된 테스트 클래스 또는 테스트 메서드 실행 X
 @Transactional // 데이터베이스 롤백

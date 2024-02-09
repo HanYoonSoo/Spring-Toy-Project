@@ -59,6 +59,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.7.0")
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
 //    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.0")
+    testImplementation("org.springframework.security:spring-security-test")
 
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 

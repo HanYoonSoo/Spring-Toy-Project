@@ -29,7 +29,7 @@ public class ResultActionsUtils {
 
     public static ResultActions getRequestWithToken(MockMvc mockMvc, String url, String accessToken, String encryptedRefreshToken) throws Exception {
         return mockMvc.perform(get(url)
-                        .contentType(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .header(AUTHORIZATION_HEADER, BEARER_PREFIX + accessToken)
                         .header(REFRESH_HEADER, encryptedRefreshToken))
                 .andDo(print());

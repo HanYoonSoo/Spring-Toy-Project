@@ -41,7 +41,6 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
         try {
             String accessToken = jwtTokenProvider.resolveAccessToken(request);
-            System.out.println("access Token: " + accessToken);
             if (StringUtils.hasText(accessToken) && doNotLogout(accessToken)
                     && jwtTokenProvider.validateToken(accessToken, response)) {
                 setAuthenticationToContext(accessToken);
@@ -58,6 +57,12 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    private void setAuthenticationToContext(String accessToken) {
+        Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        log.info("# Token verification success!");
+    }
+
     private boolean doNotLogout(String accessToken) {
         String isLogout = redisService.getValues(accessToken);
         return isLogout.equals("false");
@@ -71,9 +76,5 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
         return result;
     }
 
-    private void setAuthenticationToContext(String accessToken) {
-        Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        log.info("# Token verification success!");
-    }
+
 }
