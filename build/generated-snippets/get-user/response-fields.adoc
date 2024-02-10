@@ -1,0 +1,36 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.email+`
+|`+String+`
+|이메일
+
+|`+data.nickname+`
+|`+String+`
+|작성자 닉네임 및 타입
+
+|`+data.name+`
+|`+String+`
+|작성자 이름
+
+|`+data.address+`
+|`+Object+`
+|회원 주소
+
+|`+data.address.city+`
+|`+String+`
+|도시
+
+|`+data.address.street+`
+|`+String+`
+|도로주소
+
+|`+data.address.zipcode+`
+|`+String+`
+|우편번호
+
+|===
