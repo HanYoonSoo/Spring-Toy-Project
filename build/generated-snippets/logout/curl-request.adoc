@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/auth/logout' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA3NjYzMDAxLCJpYXQiOjE3MDc2NjEyMDF9.EjfDUYVjhMRwDWkRbLyDjvjsjy4jfzjU5iTUAudxPdo' \
+    -H 'Refresh: 0s5kMA8/HkbI8fma6SAPBzBYdvsHNa20S5jvT22vw5aW4FPDHRJBfgSc0dwbqN1RB+zpZiszk+fqQVB1hgkcSk4P9Y3PqeXCtsc5lpehD3YF/HhGov/1YXEPi55n4pYzj0HAXhWdDLo8AL1swHgumOS+zvVYohEnoDKolPkSQfwawwYGS2U7onldYtSCUz8EbgTCBJ/KV0oKqy2OLcjAlw=='
+----

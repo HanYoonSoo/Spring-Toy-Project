@@ -5,6 +5,7 @@ import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
 import com.hanyoonsoo.springtoy.module.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,5 +34,14 @@ public class AuthController {
         authService.logout(encryptedRefreshToken, accessToken);
 
         return new ResponseEntity<>(new SingleResponseDto<>("Logged out successfully"), HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/reissue")
+    public ResponseEntity reissue(HttpServletRequest request, HttpServletResponse response){
+        String encryptedRefreshToken = jwtTokenProvider.resolveRefreshToken(request);
+        String newAccessToken = authService.reissueAccessToken(encryptedRefreshToken);
+        jwtTokenProvider.accessTokenSetHeader(newAccessToken, response);
+
+        return new ResponseEntity<>(new SingleResponseDto<>("Access Token reissued"), HttpStatus.OK);
     }
 }

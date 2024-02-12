@@ -32,4 +32,11 @@ public class ResultActionsUtils {
                         .header(REFRESH_HEADER, encryptedRefreshToken))
                 .andDo(print());
     }
+
+    public static ResultActions patchRequest(MockMvc mockMvc, String url, String encryptedRefreshToken) throws Exception {
+        return mockMvc.perform(patch(url)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .header(REFRESH_HEADER, encryptedRefreshToken))
+                .andDo(print());
+    }
 }
