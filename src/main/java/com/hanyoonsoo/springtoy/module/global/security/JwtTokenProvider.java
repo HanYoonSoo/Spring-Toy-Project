@@ -1,28 +1,30 @@
 package com.hanyoonsoo.springtoy.module.global.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hanyoonsoo.springtoy.module.dto.Response;
 import com.hanyoonsoo.springtoy.module.dto.TokenDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.Data;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * JWT 토큰을 생성, 토큰 복호화 및 정보 추출, 토큰 유효성 검증 클래스
@@ -54,7 +56,8 @@ public class JwtTokenProvider {
 
     @PostConstruct
     public void keyInit(){
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        String base64EncodedSecretKey = Encoders.BASE64.encode(secretKey.getBytes(StandardCharsets.UTF_8));
+        byte[] keyBytes = Decoders.BASE64.decode(base64EncodedSecretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.accessTokenValidityInSeconds *= 1000;
         this.refreshTokenValidityInSeconds *= 1000;
@@ -122,21 +125,29 @@ public class JwtTokenProvider {
     }
 
     // 토큰 정보 검증
-    public boolean validateToken(String token, HttpServletResponse response){
+    public boolean validateToken(String token, HttpServletResponse response) throws IOException {
         try{
             parseClaims(token);
         } catch(MalformedJwtException e){
             log.info("Invalid JWT token");
             log.trace("Invalid JWT token trace = {}", e);
+            sendErrorResponse(response, "손상된 토큰입니다.");
         } catch (ExpiredJwtException e){
             log.info("Expired JWT token");
             log.trace("Expired JWT token trace = {}", e);
+            sendErrorResponse(response, "만료된 토큰입니다.");
         } catch (UnsupportedJwtException e){
             log.info("Unsupported JWT token");
             log.trace("Unsupported JWT token trace = {}", e);
+            sendErrorResponse(response, "지원하지 않는 토큰입니다.");
         } catch(IllegalArgumentException e){
             log.info("JWT claims string is empty");
             log.trace("JWT claims string is empty trace = {}", e);
+            sendErrorResponse(response, "시그니처 검증에 실패한 토큰입니다.");
+        } catch(BadCredentialsException e){
+            log.info("Login Info Error");
+            log.trace("Login Info Error is empty trace = {}", e);
+            sendErrorResponse(response, "로그인 정보가 잘못되었습니다.");
         }
         return true;
     }
@@ -176,5 +187,14 @@ public class JwtTokenProvider {
         }
 
         return null;
+    }
+
+    // JWT 예외처리
+    private void sendErrorResponse(HttpServletResponse response, String message) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        response.setCharacterEncoding("utf-8");
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.getWriter().write(objectMapper.writeValueAsString(new Response(HttpStatus.UNAUTHORIZED.value(), message)));
     }
 }

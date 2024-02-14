@@ -2,6 +2,6 @@
 ----
 $ http PATCH 'http://localhost:8080/auth/logout' \
     'Content-Type:application/json;charset=UTF-8' \
-    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA3NjYzMDAxLCJpYXQiOjE3MDc2NjEyMDF9.EjfDUYVjhMRwDWkRbLyDjvjsjy4jfzjU5iTUAudxPdo' \
-    'Refresh:0s5kMA8/HkbI8fma6SAPBzBYdvsHNa20S5jvT22vw5aW4FPDHRJBfgSc0dwbqN1RB+zpZiszk+fqQVB1hgkcSk4P9Y3PqeXCtsc5lpehD3YF/HhGov/1YXEPi55n4pYzj0HAXhWdDLo8AL1swHgumOS+zvVYohEnoDKolPkSQfwawwYGS2U7onldYtSCUz8EbgTCBJ/KV0oKqy2OLcjAlw=='
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA3OTE2ODYwLCJpYXQiOjE3MDc5MTUwNjB9.QumDjLmZaPSoyIR2jbk89e9iDwob9JUl8JH2Y8EZHNM' \
+    'Refresh:W40wiCowqH5QfMuotudbqp4jcRjHKKHi/hZAIfsGQoiWdqfRwjM+faqwrMgb+e/v/wDw61hfoT3myA9Ws+NqNbrlzFEalVMBQ4dEQoZ0T5Nj2HAFsOgZszlvd8NlUu96kuu/pJywuEEVjKpQmv+G6xxM0T1gfQGUn0I7zaOUNgCDX87WaiBzl0D1P1OtcS24hYelYs1vUaVTgZBtkg0qeg=='
 ----

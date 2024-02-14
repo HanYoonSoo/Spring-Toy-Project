@@ -1,7 +1,10 @@
 package com.hanyoonsoo.springtoy;
 
 import com.hanyoonsoo.springtoy.global.BaseIntegrationTest;
+import com.hanyoonsoo.springtoy.global.ObjectMapperUtils;
 import com.hanyoonsoo.springtoy.global.ResultActionsUtils;
+import com.hanyoonsoo.springtoy.module.dto.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.TokenDto;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
@@ -22,11 +25,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.IOException;
 import java.time.Duration;
 
+import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getRequestPreProcessor;
 import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getResponsePreProcessor;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 
 public class AuthIntegrationTest extends BaseIntegrationTest {
     private final String BASE_URL = "/auth";
@@ -44,7 +50,6 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private AES128Config aes128Config;
 
-    private String accessToken;
 
     @BeforeEach
     void beforeEach(){
@@ -55,9 +60,52 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @AfterEach
     void afterEach(){
         userService.deleteUser(EMAIL);
-        redisService.deleteValues(accessToken);
     }
 
+    @Test
+    @DisplayName("로그인 성공")
+    public void loginSuccessTest() throws Exception{
+        //given
+        LoginDto loginSuccessDto = StubData.MockUser.getLoginSuccessDto();
+        LoginResponse expectedResponseDto = StubData.MockUser.getLoginResponseDto();
+
+        //when
+        String uri  = UriComponentsBuilder.newInstance().path(BASE_URL + "/login")
+                .build().toUri().toString();
+        String json = ObjectMapperUtils.asJsonString(loginSuccessDto);
+        ResultActions actions = ResultActionsUtils.getRequest(mockMvc, uri, json);
+
+        //then
+        LoginResponse responseDto = ObjectMapperUtils.actionsSingleResponseToLoginDto(actions);
+        assertThat(expectedResponseDto.getEmail()).isEqualTo(responseDto.getEmail());
+        assertThat(expectedResponseDto.getNickName()).isEqualTo(responseDto.getNickName());
+
+        actions
+                .andExpect(status().isOk())
+                .andDo(document("login-success",
+                        getRequestPreProcessor(),
+                        getResponsePreProcessor()));
+    }
+
+    @Test
+    @DisplayName("로그인 실패")
+    void loginFailTest() throws Exception {
+        // given
+        LoginDto loginFailDto = StubData.MockUser.getLoginFailDto();
+
+        // when
+        String uri = UriComponentsBuilder.newInstance().path(BASE_URL + "/login")
+                .build().toUri().toString();
+        String json = ObjectMapperUtils.asJsonString(loginFailDto);
+        ResultActions actions = ResultActionsUtils.getRequest(mockMvc, uri, json);
+
+        // then
+        actions
+                .andExpect(status().isUnauthorized())
+                .andDo(document("login-fail",
+                        getRequestPreProcessor(),
+                        getResponsePreProcessor()));
+    }
     @Test
     @DisplayName("로그아웃")
     public void logoutTest() throws Exception{
@@ -65,7 +113,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
         User testUser = userService.findUserByEmail(EMAIL);
         CustomUserDetails userDetails = CustomUserDetails.of(testUser);
         TokenDto tokenDto = jwtTokenProvider.generateToken(userDetails);
-        accessToken = tokenDto.getAccessToken();
+        String accessToken = tokenDto.getAccessToken();
         String refreshToken = tokenDto.getRefreshToken();
         String encryptedRefreshToken = aes128Config.encryptAes(refreshToken);
         redisService.setValues(EMAIL, refreshToken, Duration.ofMillis(10000));
@@ -128,21 +176,29 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
         // then
         actions
                 .andExpect(status().is(404))
-                .andDo(document("reissue-fail-by-token-not-same",
-                        getResponsePreProcessor(),
-                        getFieldErrorSnippetsLong()));
+                .andDo(document("reissue-fail-by-token-not-same"));
+    }
+
+    @Test
+    @DisplayName("Header에 Refresh token이 존재하지 않으면 Access token 재발급 실패")
+    void accessTokenReissrueFailTest2() throws Exception {
+        // when
+        String uri = UriComponentsBuilder.newInstance().path(BASE_URL + "/reissue")
+                .build().toUri().toString();
+        ResultActions actions = ResultActionsUtils.patchRequest(mockMvc, uri);
+
+        // then
+        actions
+                .andExpect(status().is(404))
+                .andDo(document("reissue-fail-by-no-refresh-token-in-header",
+                        getResponsePreProcessor()));
     }
 
     private Snippet getFieldErrorSnippetsLong() {
-        return new Snippet(
+        return responseFields(
                 fieldWithPath("error").description("에러 코드"),
                 fieldWithPath("error_description").description("에러 상세 설명")
-        ) {
-            @Override
-            public void document(Operation operation) throws IOException {
-
-            }
-        };
+        );
     }
 }
 

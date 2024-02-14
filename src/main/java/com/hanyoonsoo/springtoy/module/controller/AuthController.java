@@ -1,6 +1,7 @@
 package com.hanyoonsoo.springtoy.module.controller;
 
 import com.hanyoonsoo.springtoy.module.dto.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
 import com.hanyoonsoo.springtoy.module.service.AuthService;
@@ -24,7 +25,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity loginDto(@Valid @RequestBody LoginDto loginDto){
-        return new ResponseEntity<>(new SingleResponseDto<>("Login successfully"), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new SingleResponseDto<>(authService.login(loginDto)), HttpStatus.OK);
     }
 
     @PatchMapping ("/logout")

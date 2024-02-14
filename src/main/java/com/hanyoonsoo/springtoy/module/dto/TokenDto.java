@@ -6,7 +6,7 @@ import lombok.Data;
 
 /**
  * 클라이언트에 토큰을 보내기 위한 DTO
- * grantType은 JWT에 대한 인증 타입이다.
+ * authorizationType은 JWT에 대한 인증 타입이다.
  */
 @Builder
 @Data

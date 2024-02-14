@@ -20,12 +20,14 @@ public class CustomUserDetails extends User implements UserDetails {
     private String email;
     private String role_str;
     private String password;
+    private String nickName;
 
     private CustomUserDetails(User user){
         this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.role_str = user.getRole().toString();
+        this.nickName = user.getNickName();
     }
 
     private CustomUserDetails(String email, String role){

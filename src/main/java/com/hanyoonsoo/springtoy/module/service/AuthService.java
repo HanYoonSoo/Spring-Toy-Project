@@ -1,5 +1,7 @@
 package com.hanyoonsoo.springtoy.module.service;
 
+import com.hanyoonsoo.springtoy.module.dto.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
@@ -9,7 +11,9 @@ import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
 import com.hanyoonsoo.springtoy.module.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
@@ -39,7 +43,7 @@ public class AuthService {
 
     private void verifiedRefreshToken(String encryptedRefreshToken){
         if(encryptedRefreshToken == null){
-            throw new IllegalStateException("refresh Token이 없습니다.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -65,7 +69,11 @@ public class AuthService {
 
             return newAccessToken;
         }
-        else throw new IllegalStateException("리프레시 토큰이 맞지 않습니다.");
+        else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
+    }
+
+    public LoginResponse login(LoginDto loginDto) {
+        return new LoginResponse(loginDto.getEmail(), "test");
     }
 }

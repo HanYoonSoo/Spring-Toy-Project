@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+PATCH /auth/reissue HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Refresh: W40wiCowqH5QfMuotudbqp4jcRjHKKHi/hZAIfsGQoiWdqfRwjM+faqwrMgb+e/v/wDw61hfoT3myA9Ws+NqNbrlzFEalVMBQ4dEQoZ0T5Nj2HAFsOgZszlvd8NlUu96kuu/pJywuEEVjKpQmv+G6xxM0T1gfQGUn0I7zaOUNgCDX87WaiBzl0D1P1OtcS24hYelYs1vUaVTgZBtkg0qeg==
+Host: localhost:8080
+
+----
