@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.util.UriComponentsBuilder;
 
 
-import java.io.IOException;
 import java.time.Duration;
 
 import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getRequestPreProcessor;
@@ -31,7 +30,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 
 public class AuthIntegrationTest extends BaseIntegrationTest {

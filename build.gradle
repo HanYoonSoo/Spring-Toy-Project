@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.1.8'
     id 'io.spring.dependency-management' version '1.1.4'
     // asciidoc 파일을 변환해서, build 폴더에 복사해주는 플러그인!
-    id 'org.asciidoctor.convert' version "1.5.6"
+    id 'org.asciidoctor.jvm.convert' version "3.3.2"
 }
 
 group = 'com.hanyoonsoo'
@@ -13,7 +13,13 @@ java {
     sourceCompatibility = '17'
 }
 
+ext{
+    snippetsDir = file('build/generated-snippets')
+    snippetsDirDeploy = file('../../build/generated-snippets')
+}
+
 configurations {
+    asciidoctorExt // configuration 등록
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -21,14 +27,28 @@ configurations {
 
 asciidoctor {
     dependsOn test    // gradle build 시 test -> asciidoctor 순으로 수행
-}
-
-bootJar {
-    dependsOn asciidoctor    // gradle build 시 asciidoctor 순으로 수행
-    from("${asciidoctor.outputDir}/html5") {    // gradle build 시 ./build/asciidoc/html5/ 에 html 파일생성
-        into 'static/docs'                        // html 파일이 jar 안의 /static/docs/ 폴더로 복사됨
+    inputs.dir snippetsDir
+    attributes 'snippets' : snippetsDir // 빌드된 snippets 경로(실행된 서버에서)
+    attributes 'snippets_deploy' : snippetsDirDeploy
+    doFirst {
+        delete 'src/main/resources/static/docs' // 기존 문서파일 삭제
     }
 }
+
+bootJar{ //springboot를 이용한 jar 파일 생성 시 필요한 설정 task
+    dependsOn asciidoctor //asciidoctor 를 의존하도록 하여, bootJar 생성 전에 asciidoctor task를 수행하도록 함
+    // (jar 파일 생성 시, 문서 생성을 보장 함)
+    copy {
+        from "build/docs/asciidoc" // 빌드폴더에 있는 adoc파일들을 from->into
+        into "src/main/resources/static/docs"
+    }
+
+//    from("build/docs/asciidoc"){
+//        into 'src/main/resources/static/docs'
+//    }
+
+}
+
 repositories {
     mavenCentral()
 }
@@ -61,7 +81,9 @@ dependencies {
 //    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.0")
     testImplementation("org.springframework.security:spring-security-test")
 
+    // Spring Rest Docs을 이용하기 위한 라이브러리
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
 
 
@@ -76,6 +98,12 @@ dependencies {
     // Bcrypt
     implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 
+    // SMTP 설정
+    implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.5'
+    implementation 'org.springframework:spring-context:6.0.7'
+    implementation 'org.springframework:spring-context-support:6.0.7'
+    implementation 'com.sun.mail:jakarta.mail:2.0.1'
+
 }
 tasks.named('test') {
     useJUnitPlatform()
@@ -83,10 +111,17 @@ tasks.named('test') {
 
 test {
     useJUnitPlatform()
+    outputs.dir snippetsDir
 }
 
 tasks.named('bootBuildImage') {
     builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
+//tasks {
+//    processResources {
+//        duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+//    }
+//}
 
+// https://tbmaster.tistory.com/96      <- RestDocs Setting

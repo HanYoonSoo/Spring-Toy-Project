@@ -29,7 +29,8 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
                     "/h2",
                     "/users/signup",
                     "/auth/login",
-                    "/auth/reissue");
+                    "/auth/reissue",
+                    "docs/index.html");
     private final JwtTokenProvider jwtTokenProvider;
     private final RedisService redisService;
 

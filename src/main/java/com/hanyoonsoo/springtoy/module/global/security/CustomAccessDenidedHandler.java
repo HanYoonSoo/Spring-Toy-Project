@@ -28,6 +28,6 @@ public class CustomAccessDenidedHandler implements AccessDeniedHandler {
         response.setCharacterEncoding("utf-8");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(new Response(HttpStatus.FORBIDDEN.value(), message)));
+        response.getWriter().write(objectMapper.writeValueAsString(new Response(HttpStatus.FORBIDDEN.value(), "해당 기능을 수행할 사용자 권한이 없습니다.")));
     }
 }

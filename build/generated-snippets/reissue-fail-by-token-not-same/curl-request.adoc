@@ -2,5 +2,5 @@
 ----
 $ curl 'http://localhost:8080/auth/reissue' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Refresh: W40wiCowqH5QfMuotudbqp4jcRjHKKHi/hZAIfsGQoiWdqfRwjM+faqwrMgb+e/v/wDw61hfoT3myA9Ws+NqNbrlzFEalVMBQ4dEQoZ0T5Nj2HAFsOgZszlvd8NlUu96kuu/pJywuEEVjKpQmv+G6xxM0T1gfQGUn0I7zaOUNgCDX87WaiBzl0D1P1OtcS24hYelYs1vUaVTgZBtkg0qeg=='
+    -H 'Refresh: v0MTNn4cf7qRARc3wKbiCrQhTtsPDN+DTsCcLUuSwmbNMTi/dMwbLBHVk4VJwGNGi1InbKxhNFfJZ41CmFliWh3IwOOSmaER/6/R4r+hOOhmbUbRPFQ8OPaaTLctycoH6Chg+PyEOdY0exSuRDyQ0NUHA++jV8zV2uqwges1b6fbYWVQgx0XUHgbyRqqK/NL9s7o22ZEAFjHAHT8owvqIg=='
 ----

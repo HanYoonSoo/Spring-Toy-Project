@@ -1,6 +1,5 @@
 package com.hanyoonsoo.springtoy.stubdata;
 
-import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.LoginDto;
 import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
@@ -8,8 +7,6 @@ import com.hanyoonsoo.springtoy.module.entity.Address;
 import com.hanyoonsoo.springtoy.module.entity.Gender;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
-import com.hanyoonsoo.springtoy.module.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
