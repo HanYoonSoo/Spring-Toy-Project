@@ -32,7 +32,6 @@ public class UserController {
         String email = user.getEmail();
         UserDto.Response response = userService.userDtoResponse(email);
 
-        System.out.println("getUser: " + user + "=============");
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 

@@ -6,6 +6,8 @@ import com.hanyoonsoo.springtoy.module.dto.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
+import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
+import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
 import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
 import com.hanyoonsoo.springtoy.module.repository.UserRepository;
@@ -16,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -41,15 +42,19 @@ public class AuthService {
         }
     }
 
+    public LoginResponse login(LoginDto loginDto) {
+        return new LoginResponse(loginDto.getEmail(), "test");
+    }
+
     private void verifiedRefreshToken(String encryptedRefreshToken){
         if(encryptedRefreshToken == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new BusinessLogicException(ErrorCode.REFRESH_TOKEN_NOT_FOUND);
         }
     }
 
     private User findUserByEmail(String email){
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new NoSuchElementException("해당 유저가 없습니다."));
+                .orElseThrow(() -> new BusinessLogicException(ErrorCode.USER_NOT_FOUND));
     }
 
     public String reissueAccessToken(String encryptedRefreshToken) {
@@ -73,7 +78,5 @@ public class AuthService {
 
     }
 
-    public LoginResponse login(LoginDto loginDto) {
-        return new LoginResponse(loginDto.getEmail(), "test");
-    }
+
 }

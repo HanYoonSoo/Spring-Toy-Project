@@ -1,6 +1,8 @@
 package com.hanyoonsoo.springtoy.module.entity.item;
 
 import com.hanyoonsoo.springtoy.module.entity.OrderItem;
+import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
+import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +33,7 @@ public abstract class Item {
         int restQuantity = this.stockQuantity - quantity;
 
         if(restQuantity < 0){
-            throw new IllegalStateException("재고가 충분하지 않습니다.");
+            throw new BusinessLogicException(ErrorCode.NOT_ENOUGH_STOCK);
         }
 
         this.stockQuantity = restQuantity;

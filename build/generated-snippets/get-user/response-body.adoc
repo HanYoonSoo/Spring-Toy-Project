@@ -9,7 +9,8 @@
       "city" : "test",
       "street" : "1234",
       "zipcode" : "1234"
-    }
+    },
+    "gender" : "남자"
   }
 }
 ----

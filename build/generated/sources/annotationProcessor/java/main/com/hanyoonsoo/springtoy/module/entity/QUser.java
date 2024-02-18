@@ -33,6 +33,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath email = createString("email");
 
+    public final EnumPath<Gender> gender = createEnum("gender", Gender.class);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final ListPath<Image, QImage> images = this.<Image, QImage>createList("images", Image.class, QImage.class, PathInits.DIRECT2);

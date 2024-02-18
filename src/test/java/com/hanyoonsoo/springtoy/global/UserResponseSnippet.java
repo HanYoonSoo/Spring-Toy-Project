@@ -34,7 +34,8 @@ public class UserResponseSnippet {
                         fieldWithPath("data.address").type(JsonFieldType.OBJECT).description("회원 주소"),
                         fieldWithPath("data.address.city").type(JsonFieldType.STRING).description("도시"),
                         fieldWithPath("data.address.street").type(JsonFieldType.STRING).description("도로주소"),
-                        fieldWithPath("data.address.zipcode").type(JsonFieldType.STRING).description("우편번호")
+                        fieldWithPath("data.address.zipcode").type(JsonFieldType.STRING).description("우편번호"),
+                        fieldWithPath("data.gender").type(JsonFieldType.STRING).description("성별")
                 )
         );
     }

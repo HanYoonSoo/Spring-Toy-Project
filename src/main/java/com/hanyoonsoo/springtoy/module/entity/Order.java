@@ -1,5 +1,7 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
+import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
+import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -76,7 +78,7 @@ public class Order extends BaseEntity {
 
     public void cancel(){
         if(delivery.getDeliveryStatus() == DeliveryStatus.COMP){
-            throw new IllegalStateException("이미 배송이 시작된 상품은 취소가 안됩니다.");
+            throw new BusinessLogicException(ErrorCode.INVALID_CANCEL);
         }
 
         this.setOrderStatus(OrderStatus.CANCEL);

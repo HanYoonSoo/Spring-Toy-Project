@@ -11,7 +11,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 196
+Content-Length: 221
 
 {
   "data" : {
@@ -22,7 +22,8 @@ Content-Length: 196
       "city" : "test",
       "street" : "1234",
       "zipcode" : "1234"
-    }
+    },
+    "gender" : "남자"
   }
 }
 ----

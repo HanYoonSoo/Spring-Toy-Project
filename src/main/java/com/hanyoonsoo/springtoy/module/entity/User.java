@@ -38,6 +38,9 @@ public class User extends BaseEntity{
     @Embedded
     private Address address;
 
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
+
     private boolean isVerify = Boolean.FALSE;
 
     private boolean deleted = Boolean.FALSE;
@@ -58,6 +61,7 @@ public class User extends BaseEntity{
         user.setRole(Authority.ROLE_USER);
         user.setAddress(signUpDto.getAddress());
         user.setPassword(signUpDto.getPassword());
+        user.setGender(signUpDto.getGender());
         return user;
     }
 }

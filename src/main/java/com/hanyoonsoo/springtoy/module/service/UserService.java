@@ -29,11 +29,8 @@ public class UserService {
         String encPassword = encryptHelper.encrypt(rawPassword);
         signUpDto.setPassword(encPassword);
 
-        System.out.println("UserService: " + rawPassword);
-        System.out.println("UserService: " + encPassword);
         User newUser = User.createUserByDto(signUpDto);
 
-        newUser.setRole(Authority.ROLE_USER);
         userRepository.save(newUser);
 
         return new UserDto.Response(newUser);
