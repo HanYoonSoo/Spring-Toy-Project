@@ -2,6 +2,7 @@ package com.hanyoonsoo.springtoy.module.service;
 
 import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.EncryptHelper;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
@@ -149,7 +150,7 @@ public class UserService {
         userRepository.deleteByEmail(email);
     }
 
-    public UserDto.Response updateUser(String email, UserDto.Patch updateDto) {
+    public UserDto.Response updateUser(String email, UserPatchDto updateDto) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new BusinessLogicException(ErrorCode.USER_NOT_FOUND));
         user.setAddress(updateDto.getAddress());
         user.setNickName(updateDto.getNickname());

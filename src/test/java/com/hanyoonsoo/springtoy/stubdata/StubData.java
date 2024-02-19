@@ -3,6 +3,7 @@ package com.hanyoonsoo.springtoy.stubdata;
 import com.hanyoonsoo.springtoy.module.dto.LoginDto;
 import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
 import com.hanyoonsoo.springtoy.module.entity.Address;
 import com.hanyoonsoo.springtoy.module.entity.Gender;
 import com.hanyoonsoo.springtoy.module.entity.User;
@@ -35,8 +36,8 @@ public class StubData {
             return new LoginDto("email@gmail.com", "12345");
         }
 
-        public static UserDto.Patch getPatchDto() {
-            return new UserDto.Patch("test2", new Address("test2", "12345", "12345"));
+        public static UserPatchDto getPatchDto() {
+            return new UserPatchDto("test2", new Address("test2", "12345", "12345"));
         }
     }
 }

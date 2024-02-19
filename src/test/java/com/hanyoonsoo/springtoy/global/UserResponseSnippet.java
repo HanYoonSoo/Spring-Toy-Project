@@ -15,7 +15,10 @@ public class UserResponseSnippet {
         return requestFields(
                 List.of(
                         fieldWithPath("nickname").type(JsonFieldType.STRING).description("회원 닉네임"),
-                        fieldWithPath("address").type(JsonFieldType.STRING).description("회원 주소")
+                        fieldWithPath("address").type(JsonFieldType.OBJECT).description("회원 주소"),
+                        fieldWithPath("address.city").type(JsonFieldType.STRING).description("도시"),
+                        fieldWithPath("address.street").type(JsonFieldType.STRING).description("도로주소"),
+                        fieldWithPath("address.zipcode").type(JsonFieldType.STRING).description("우편번호")
                 )
         );
     }

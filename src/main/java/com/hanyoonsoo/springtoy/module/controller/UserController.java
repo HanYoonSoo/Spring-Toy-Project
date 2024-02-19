@@ -3,6 +3,7 @@ package com.hanyoonsoo.springtoy.module.controller;
 import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
 import com.hanyoonsoo.springtoy.module.service.UserService;
 import jakarta.validation.Valid;
@@ -37,10 +38,11 @@ public class UserController {
     }
 
     @PatchMapping
-    public ResponseEntity patchUser(@AuthenticationPrincipal CustomUserDetails user, @Valid @RequestBody UserDto.Patch patchDto) {
+    public ResponseEntity patchUser(@AuthenticationPrincipal CustomUserDetails user, @Valid @RequestBody UserPatchDto patchDto) {
         String email = user.getEmail();
 
         UserDto.Response response = userService.updateUser(email, patchDto);
+
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 

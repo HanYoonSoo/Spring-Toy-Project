@@ -12,6 +12,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class ObjectMapperUtils {
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -25,10 +26,13 @@ public class ObjectMapperUtils {
     }
 
     public static SingleResponseDto<UserDto.Response> actionsSingleResponseToUserDto(ResultActions actions) throws Exception {
-        String response = actions.andReturn().getResponse().getContentAsString();
+        String response = new String(actions.andReturn().getResponse().getContentAsByteArray(), StandardCharsets.UTF_8);
+
+        System.out.println(response);
+
         objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
         objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
-        return objectMapper.registerModule(new JavaTimeModule()).readValue(response, new TypeReference<>() {
+        return objectMapper.registerModule(new JavaTimeModule()).readValue(response, new TypeReference<SingleResponseDto<UserDto.Response>>() {
         });
     }
 

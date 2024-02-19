@@ -40,7 +40,7 @@ public class UserDto {
         this.gender = gender;
     }
 
-    public UserDto(String nickname, Address address) {
+    public UserDto(@NotBlank(message = "닉네임을 입력해주세요.") String nickname, @NotNull(message = "주소를 입력해주세요.") Address address) {
         this.nickname = nickname;
         this.address = address;
     }
@@ -71,12 +71,12 @@ public class UserDto {
         }
     }
 
-    @Getter @Setter
-    public static class Patch extends UserDto{
-
-        public Patch(@NotBlank(message = "닉네임을 입력해주세요.") String nickname, @NotNull(message = "주소를 입력해주세요.") Address address) {
-            super(nickname, address);
-        }
-
-    }
+//    @Getter @Setter
+//    public static class Patch extends UserDto{
+//
+//        public Patch(@NotBlank(message = "닉네임을 입력해주세요.") String nickname, @NotNull(message = "주소를 입력해주세요.") Address address) {
+//            super(nickname, address);
+//        }
+//
+//    }
 }

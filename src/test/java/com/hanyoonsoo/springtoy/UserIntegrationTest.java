@@ -4,10 +4,7 @@ import com.hanyoonsoo.springtoy.global.BaseIntegrationTest;
 import com.hanyoonsoo.springtoy.global.ObjectMapperUtils;
 import com.hanyoonsoo.springtoy.global.ResultActionsUtils;
 import com.hanyoonsoo.springtoy.global.UserResponseSnippet;
-import com.hanyoonsoo.springtoy.module.dto.Response;
-import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
-import com.hanyoonsoo.springtoy.module.dto.TokenDto;
-import com.hanyoonsoo.springtoy.module.dto.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.*;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
@@ -67,7 +64,7 @@ public class UserIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
-    private UserDto.Patch patchDto;
+    private UserPatchDto patchDto;
 
     @BeforeEach
     void beforeEach(){
@@ -130,12 +127,14 @@ public class UserIntegrationTest extends BaseIntegrationTest {
 
         //then
         SingleResponseDto<UserDto.Response> responseDto = ObjectMapperUtils.actionsSingleResponseToUserDto(actions);
-        UserDto.Patch patchDto = StubData.MockUser.getPatchDto();
+        UserPatchDto patchDto = StubData.MockUser.getPatchDto();
 
         UserDto.Response response = responseDto.getData();
 
         assertThat(response.getNickname()).isEqualTo(patchDto.getNickname());
-        assertThat(response.getAddress()).isEqualTo(patchDto.getAddress());
+        assertThat(response.getAddress().getCity()).isEqualTo(patchDto.getAddress().getCity());
+        assertThat(response.getAddress().getStreet()).isEqualTo(patchDto.getAddress().getStreet());
+        assertThat(response.getAddress().getZipcode()).isEqualTo(patchDto.getAddress().getZipcode());
 
         actions
                 .andExpect(status().isOk())
