@@ -34,5 +34,9 @@ public class StubData {
         public static LoginDto getLoginFailDto() {
             return new LoginDto("email@gmail.com", "12345");
         }
+
+        public static UserDto.Patch getPatchDto() {
+            return new UserDto.Patch("test2", new Address("test2", "12345", "12345"));
+        }
     }
 }

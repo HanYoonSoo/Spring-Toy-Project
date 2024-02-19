@@ -36,6 +36,14 @@ public class UserController {
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
+    @PatchMapping
+    public ResponseEntity patchUser(@AuthenticationPrincipal CustomUserDetails user, @Valid @RequestBody UserDto.Patch patchDto) {
+        String email = user.getEmail();
+
+        UserDto.Response response = userService.updateUser(email, patchDto);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
+    }
+
     @PostMapping("/emails/verification-requests")
     public ResponseEntity sendMessage(@RequestParam("email") @Valid String email){
         userService.sendCodeToEmail(email);

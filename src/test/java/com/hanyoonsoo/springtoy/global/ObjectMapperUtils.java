@@ -1,8 +1,13 @@
 package com.hanyoonsoo.springtoy.global;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
+import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
+import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import org.apache.catalina.connector.Response;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -19,9 +24,12 @@ public class ObjectMapperUtils {
         }
     }
 
-    public static Response actionsSingleResponseToUserDto(ResultActions actions) throws Exception {
+    public static SingleResponseDto<UserDto.Response> actionsSingleResponseToUserDto(ResultActions actions) throws Exception {
         String response = actions.andReturn().getResponse().getContentAsString();
-        return objectMapper.registerModule(new JavaTimeModule()).readValue(response, Response.class);
+        objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
+        objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
+        return objectMapper.registerModule(new JavaTimeModule()).readValue(response, new TypeReference<>() {
+        });
     }
 
     public static LoginResponse actionsSingleResponseToLoginDto(ResultActions actions) throws Exception {

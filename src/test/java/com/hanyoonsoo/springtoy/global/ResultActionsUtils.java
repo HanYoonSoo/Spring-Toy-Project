@@ -3,9 +3,13 @@ package com.hanyoonsoo.springtoy.global;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.MultiValueMap;
+
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 public class ResultActionsUtils {
@@ -50,6 +54,25 @@ public class ResultActionsUtils {
         return mockMvc.perform(get(url)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(json))
+                .andDo(print());
+    }
+
+    public static ResultActions postRequestWithAuthCodeAndToken(MockMvc mockMvc, String url, String accessToken, String encryptedRefreshToken, String email, String code) throws Exception {
+        return mockMvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .header(AUTHORIZATION_HEADER, BEARER_PREFIX + accessToken)
+                        .header(REFRESH_HEADER, encryptedRefreshToken)
+                .param("email", email)
+                        .param("code", code))
+                .andDo(print());
+    }
+
+    public static ResultActions patchRequestWithContentAndToken(MockMvc mockMvc, String url, String json, String accessToken, String encryptedRefreshToken) throws Exception {
+        return mockMvc.perform(patch(url)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .header(AUTHORIZATION_HEADER, BEARER_PREFIX + accessToken)
+                        .header(REFRESH_HEADER, encryptedRefreshToken)
+                        .content(json))
                 .andDo(print());
     }
 }

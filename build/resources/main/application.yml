@@ -24,13 +24,13 @@ spring: #띄어쓰기 없음
           writetimeout: 5000
     auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30분
 
-  jpa: #띄어쓰기 2칸
-    hibernate: #띄어쓰기 4칸
-      ddl-auto: create-drop #띄어쓰기 6칸
-    properties: #띄어쓰기 4칸
-      hibernate: #띄어쓰기 6칸
-        # show_sql: true #띄어쓰기 8칸
-        format_sql: true #띄어쓰기 8칸
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        # show_sql: true
+        format_sql: true
         default_batch_fetch_size: 100
     open-in-view: false
 

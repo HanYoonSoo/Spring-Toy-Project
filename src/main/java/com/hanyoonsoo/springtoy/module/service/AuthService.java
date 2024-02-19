@@ -15,18 +15,21 @@ import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AuthService {
     private final JwtTokenProvider jwtTokenProvider;
     private final AES128Config aes128Config;
     private final RedisService redisService;
     private final UserRepository userRepository;
 
+    @Transactional
     public void logout(String encryptedRefreshToken, String accessToken) {
         this.verifiedRefreshToken(encryptedRefreshToken);
         String refreshToken = aes128Config.decryptAes(encryptedRefreshToken);

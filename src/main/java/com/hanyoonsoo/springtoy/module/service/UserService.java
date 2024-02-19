@@ -1,6 +1,5 @@
 package com.hanyoonsoo.springtoy.module.service;
 
-import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
@@ -43,8 +42,11 @@ public class UserService {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-//    @Transactional
+    @Transactional
     public UserDto.Response signUp(UserDto.SignUp signUpDto) {
+        // 가입된 유저인지 확인
+        this.checkUserExist(signUpDto.getEmail());
+
         // 비밀번호 암호화
         String rawPassword = signUpDto.getPassword();
         String encPassword = encryptHelper.encrypt(rawPassword);
@@ -68,13 +70,33 @@ public class UserService {
                 authCode, Duration.ofMillis(this.authCodeExpirationMillis));
     }
 
+    @Transactional
+    public void sendCodeToEmailForTest(String toEmail, String code){
+        this.checkDuplicatedEmail(toEmail);
+        String title = "이메일 인증 번호 테스트";
+        String authCode = code;
+        mailService.sendEmail(toEmail, title, authCode);
+
+        // 이메일 인증 요청 시 인증 번호 Redis에 저장 (key = "AuthCode " + Email / value = AuthCode)
+        redisService.setValues(AUTH_CODE_PREFIX + toEmail,
+                authCode, Duration.ofMillis(this.authCodeExpirationMillis));
+    }
+
     private void checkDuplicatedEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if(user.isPresent()){
             if(user.get().isVerify()){
                 log.debug("UserService.checkDuplicatedEmail exception occur email: {}", email);
-                throw new BusinessLogicException(ErrorCode.USER_EXISTS);
+                throw new BusinessLogicException(ErrorCode.VERIFIED_USER);
             }
+        }
+    }
+
+    private void checkUserExist(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()){
+            log.debug("UserService.checkUserExist exception occur email: {}", email);
+            throw new BusinessLogicException(ErrorCode.USER_EXISTS);
         }
     }
 
@@ -99,7 +121,6 @@ public class UserService {
         String redisAuthCode = redisService.getValues(AUTH_CODE_PREFIX + email);
         boolean authResult = redisService.checkExistsValue(redisAuthCode) && redisAuthCode.equals(authCode);
 
-        System.out.println("==============" + authResult);
         if(authResult){
             updateUserEmailVerified(email);
         }
@@ -126,5 +147,13 @@ public class UserService {
 
     public void deleteUser(String email) {
         userRepository.deleteByEmail(email);
+    }
+
+    public UserDto.Response updateUser(String email, UserDto.Patch updateDto) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new BusinessLogicException(ErrorCode.USER_NOT_FOUND));
+        user.setAddress(updateDto.getAddress());
+        user.setNickName(updateDto.getNickname());
+
+        return new UserDto.Response(user);
     }
 }

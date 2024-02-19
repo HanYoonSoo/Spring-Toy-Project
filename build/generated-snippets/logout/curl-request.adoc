@@ -2,6 +2,6 @@
 ----
 $ curl 'http://localhost:8080/auth/logout' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4MjY0MDIwLCJpYXQiOjE3MDgyNjIyMjB9.Xki0iZ-M5W6G30_tfW8e5xRxZLUZAU37J7hy9zVkWtI' \
-    -H 'Refresh: v0MTNn4cf7qRARc3wKbiCrQhTtsPDN+DTsCcLUuSwmbNMTi/dMwbLBHVk4VJwGNGi1InbKxhNFfJZ41CmFliWqcZkMRHfCUdorIZQIl9Pf08S5T0KbbGP8j4h35m4bp7tmtso5qbnq2YkFeSO2CYkG/nBoXvgnkF+uGWXBw60x2vTOBJUrm6X5GsFaQX1eLM/zqcuzkmkI1vI+1Q3QpzVg=='
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4MzI2Njc3LCJpYXQiOjE3MDgzMjQ4Nzd9.8ahPi1uSeYQKMPv_abHi2BXdUoPo6_vM9JXstKbpvgg' \
+    -H 'Refresh: U5aNwGwd8xvDC4F6JLZMR0jO4Fp2XpGBKLhm7eGHN4rukOnWbWcnl/aQYcdFl68I1L9vOwoTsiNsk0SPL2JR5Zjs61zUw2MNP50txA5nwXrgvDi2SNA0jgA/Z3KfrWTblIAi8dWRHtDOa5wWh76eKco525UkLltXwBv2n4tQ8T+gzLRs3+UVmRYuU81TthGpMuflHoG6tsivdfdCoHqHeA=='
 ----

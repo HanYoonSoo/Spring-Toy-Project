@@ -15,7 +15,6 @@ java {
 
 ext{
     snippetsDir = file('build/generated-snippets')
-    snippetsDirDeploy = file('../../build/generated-snippets')
 }
 
 configurations {
@@ -29,7 +28,6 @@ asciidoctor {
     dependsOn test    // gradle build 시 test -> asciidoctor 순으로 수행
     inputs.dir snippetsDir
     attributes 'snippets' : snippetsDir // 빌드된 snippets 경로(실행된 서버에서)
-    attributes 'snippets_deploy' : snippetsDirDeploy
     doFirst {
         delete 'src/main/resources/static/docs' // 기존 문서파일 삭제
     }
@@ -42,11 +40,6 @@ bootJar{ //springboot를 이용한 jar 파일 생성 시 필요한 설정 task
         from "build/docs/asciidoc" // 빌드폴더에 있는 adoc파일들을 from->into
         into "src/main/resources/static/docs"
     }
-
-//    from("build/docs/asciidoc"){
-//        into 'src/main/resources/static/docs'
-//    }
-
 }
 
 repositories {

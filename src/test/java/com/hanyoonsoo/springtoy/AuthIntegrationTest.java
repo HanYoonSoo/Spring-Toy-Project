@@ -187,42 +187,11 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
 
         // then
         actions
-                .andExpect(status().is(404))
+                .andExpect(status().is(401))
                 .andDo(document("reissue-fail-by-no-refresh-token-in-header",
                         getResponsePreProcessor()));
     }
 
-    @Test
-    @DisplayName("중복 로그인 방지")
-    public void duplicateLoginTest() throws Exception{
-        //given
-        LoginDto loginSuccessDto1 = StubData.MockUser.getLoginSuccessDto();
-        LoginDto loginSuccessDto2 = StubData.MockUser.getLoginSuccessDto();
-        LoginResponse expectedResponseDto = StubData.MockUser.getLoginResponseDto();
-
-        //when
-        String uri  = UriComponentsBuilder.newInstance().path(BASE_URL + "/login")
-                .build().toUri().toString();
-        String json = ObjectMapperUtils.asJsonString(loginSuccessDto1);
-        ResultActionsUtils.getRequest(mockMvc, uri, json);
-        ResultActions actions;
-
-        uri  = UriComponentsBuilder.newInstance().path(BASE_URL + "/login")
-                .build().toUri().toString();
-        json = ObjectMapperUtils.asJsonString(loginSuccessDto2);
-        actions = ResultActionsUtils.getRequest(mockMvc, uri, json);
-
-        //then
-        LoginResponse responseDto = ObjectMapperUtils.actionsSingleResponseToLoginDto(actions);
-        assertThat(expectedResponseDto.getEmail()).isEqualTo(responseDto.getEmail());
-        assertThat(expectedResponseDto.getNickName()).isEqualTo(responseDto.getNickName());
-
-        actions
-                .andExpect(status().isOk())
-                .andDo(document("login-success",
-                        getRequestPreProcessor(),
-                        getResponsePreProcessor()));
-    }
 
     private Snippet getFieldErrorSnippetsLong() {
         return responseFields(

@@ -2,6 +2,8 @@ package com.hanyoonsoo.springtoy.module.global.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
+import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
+import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
 import io.jsonwebtoken.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -9,10 +11,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -30,7 +34,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
                     "/users/signup",
                     "/auth/login",
                     "/auth/reissue",
-                    "docs/index.html");
+                    "/docs/index.html");
     private final JwtTokenProvider jwtTokenProvider;
     private final RedisService redisService;
 
@@ -42,10 +46,22 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
         try {
             String accessToken = jwtTokenProvider.resolveAccessToken(request);
-            if (StringUtils.hasText(accessToken) && doNotLogout(accessToken)
-                    && jwtTokenProvider.validateToken(accessToken, response)) {
-                setAuthenticationToContext(accessToken);
+            String encryptedRefreshToken = jwtTokenProvider.resolveRefreshToken(request);
+
+            if(encryptedRefreshToken == null){
+                String json = ErrorCode.REFRESH_TOKEN_NOT_FOUND.getMessage();
+                response.setContentType("application/json; charset=UTF-8");
+                response.getWriter().write(json);
+                response.setStatus(ErrorCode.REFRESH_TOKEN_NOT_FOUND.getHttpStatus().value());
+                response.setCharacterEncoding("utf-8");
+                return;
+            }else{
+                if(StringUtils.hasText(accessToken) && doNotLogout(accessToken)
+                        && jwtTokenProvider.validateToken(accessToken, response)){
+                    setAuthenticationToContext(accessToken);
+                }
             }
+
             // TODO: 예외처리 리팩토링
         } catch (RuntimeException e) {
             if (e instanceof RuntimeException) {
