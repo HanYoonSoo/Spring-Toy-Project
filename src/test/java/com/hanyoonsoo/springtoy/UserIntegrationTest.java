@@ -146,7 +146,7 @@ public class UserIntegrationTest extends BaseIntegrationTest {
     }
 
     @Test
-    @DisplayName("이메일 코드 성공")
+    @DisplayName("이메일 코드 검증 성공")
     public void emailCodeSuccessTest() throws Exception{
         //given
         User user = userService.findUserByEmail(EMAIL);
@@ -176,7 +176,7 @@ public class UserIntegrationTest extends BaseIntegrationTest {
     }
 
     @Test
-    @DisplayName("이메일 코드 실패")
+    @DisplayName("이메일 코드 검증 실패")
     public void emailCodeFailTest() throws Exception{
         //given
         User user = userService.findUserByEmail(EMAIL);

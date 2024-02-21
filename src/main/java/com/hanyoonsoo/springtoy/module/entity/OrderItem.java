@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hanyoonsoo.springtoy.module.entity.item.Item;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -19,6 +20,7 @@ public class OrderItem extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;

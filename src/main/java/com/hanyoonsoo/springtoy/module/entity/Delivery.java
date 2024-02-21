@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Delivery extends BaseEntity{
     @Embedded
     private Address address;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "delivery")
     private Order order;
 

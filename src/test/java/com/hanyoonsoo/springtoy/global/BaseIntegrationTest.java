@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.global;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,12 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.test.context.transaction.TestTransaction;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Disabled // 해당 Annotation이 지정된 테스트 클래스 또는 테스트 메서드 실행 X
 @Transactional // 데이터베이스 롤백
@@ -24,4 +27,11 @@ public class BaseIntegrationTest {
 
     @Autowired
     protected MockMvc mockMvc;
+
+    @BeforeEach
+    public void checkTransactionIsActive() {
+        //Assumption
+        assertTrue(TestTransaction.isActive(), "안전을 위해 트랜잭션 처리를 해주십시오");
+        assertTrue(TestTransaction.isFlaggedForRollback(), "롤백 설정을 확인하세요");
+    }
 }

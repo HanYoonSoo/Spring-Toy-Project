@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import jakarta.persistence.*;
@@ -45,6 +46,7 @@ public class User extends BaseEntity{
 
     private boolean deleted = Boolean.FALSE;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
