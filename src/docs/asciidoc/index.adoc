@@ -1,0 +1,28 @@
+= API 문서
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+
+
+== 서론
+
+API 문서에 오신 것을 환영합니다!
+
+== 사용자 정보 API
+
+HTTP Request 예시
+
+include::{snippets}/get-user/http-request.adoc[]
+
+HTTP Response 예시
+include::{snippets}/get-user/http-response.adoc[]
+
+Request Body 예시
+include::{snippets}/get-user/request-body.adoc[]
+
+Response Body 예시
+include::{snippets}/get-user/response-body.adoc[]
+
+Response Field 예시
+include::{snippets}/get-user/response-fields.adoc[]

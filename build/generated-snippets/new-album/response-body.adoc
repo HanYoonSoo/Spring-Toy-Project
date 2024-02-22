@@ -1,0 +1,13 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : {
+    "itemId" : 1,
+    "name" : "test1",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "artist" : "abc",
+    "etc" : "abc"
+  }
+}
+----

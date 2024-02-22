@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.itemId+`
+|`+Number+`
+|아이템 ID
+
+|`+data.name+`
+|`+String+`
+|앨범 이름
+
+|`+data.price+`
+|`+Number+`
+|앨범 가격
+
+|`+data.stockQuantity+`
+|`+Number+`
+|앨범 재고
+
+|`+data.artist+`
+|`+String+`
+|앨범 가수
+
+|`+data.etc+`
+|`+String+`
+|앨범 ETC
+
+|===

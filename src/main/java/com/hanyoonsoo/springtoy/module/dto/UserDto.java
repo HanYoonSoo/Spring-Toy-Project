@@ -40,11 +40,6 @@ public class UserDto {
         this.gender = gender;
     }
 
-    public UserDto(@NotBlank(message = "닉네임을 입력해주세요.") String nickname, @NotNull(message = "주소를 입력해주세요.") Address address) {
-        this.nickname = nickname;
-        this.address = address;
-    }
-
 
     @Getter @Setter
     @NoArgsConstructor

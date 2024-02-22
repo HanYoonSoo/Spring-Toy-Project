@@ -1,8 +1,8 @@
 package com.hanyoonsoo.springtoy.module.service;
 
-import com.hanyoonsoo.springtoy.module.dto.LoginDto;
-import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
-import com.hanyoonsoo.springtoy.module.dto.TokenDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginResponse;
+import com.hanyoonsoo.springtoy.module.dto.auth.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;

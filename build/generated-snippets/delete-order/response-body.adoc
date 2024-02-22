@@ -1,0 +1,6 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : "주문을 취소했습니다."
+}
+----

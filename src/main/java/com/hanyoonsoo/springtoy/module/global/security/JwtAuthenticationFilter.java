@@ -1,8 +1,8 @@
 package com.hanyoonsoo.springtoy.module.global.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hanyoonsoo.springtoy.module.dto.LoginDto;
-import com.hanyoonsoo.springtoy.module.dto.TokenDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
@@ -18,7 +18,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;

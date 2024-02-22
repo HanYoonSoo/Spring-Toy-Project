@@ -1,7 +1,6 @@
 package com.hanyoonsoo.springtoy.module.controller;
 
-import com.hanyoonsoo.springtoy.module.dto.LoginDto;
-import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginDto;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
 import com.hanyoonsoo.springtoy.module.service.AuthService;

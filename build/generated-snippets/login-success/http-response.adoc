@@ -4,15 +4,14 @@ HTTP/1.1 200 OK
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4MzUyMDY3LCJpYXQiOjE3MDgzNTAyNjd9.shrkyeJnRQP7GhOF9OmbeOLMxFIe-Vt8O0Rb0Xxymzk
-Refresh: 3Y8RtpJFbCFLQMN+xJhWQBODE4nORrrlS2/4TihlRZa628UOxWZT+bNbOPsBhDKkU7ayIs0IthbdjsYbG3pRmzp6XPvXN0E0EDbT2viA+EDiCp5YQx4SDdPPpUpUsuYkXPhEak0ETIXLGwhneDFOrLZK2JM5mTCRal4u0m5HqYye4QA6oQeFubDrt/LOfgApNHLXUpVNZwPzoQcqO7w6eA==
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTIzLCJpYXQiOjE3MDg1ODcxMjN9.6E0S3tH-p61GiHgI62p5xHpAE6V5G4OJq4VgselAHl4
+Refresh: BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxLOPZovR6nuHMwpJGUAjqBJh0Xr3bJ1y+jmCCvw1PeqqRv8FiM8ra2/NkEgiU3WPLKzgYfa2UG962T+AOYOgA7kO6YpM15sfjm8k+EUGpL1000n6onx6HS1rUELKPHR1xA==
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-X-Frame-Options: DENY
 Content-Length: 56
 
 {

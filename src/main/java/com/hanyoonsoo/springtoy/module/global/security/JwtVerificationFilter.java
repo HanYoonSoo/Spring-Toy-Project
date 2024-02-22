@@ -77,6 +77,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
 
     private void setAuthenticationToContext(String accessToken) {
         Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
+        System.out.println(authentication.getPrincipal().toString());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         log.info("# Token verification success!");
     }

@@ -1,0 +1,8 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+String+`
+|결과 데이터
+
+|===

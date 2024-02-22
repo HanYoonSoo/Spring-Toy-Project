@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/items' -i -X GET \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTI0LCJpYXQiOjE3MDg1ODcxMjR9.xCoNXq98I7EQoUeflHABV5lY5NR3p2rof_Ad6rr8aiI' \
+    -H 'Refresh: BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxD++SJ4uqg6j4eVw4ZNXGjHxLG0kQYG5UdtrL3fzTwx9v6pIqX/sOSQ1V1Ci9PAlsHJtn74tMXVgpvzWpIYtgH7hL5iHDbA5VDGnyZVdOPBBpBSHijrpUl0K2NBJu+JKKw=='
+----

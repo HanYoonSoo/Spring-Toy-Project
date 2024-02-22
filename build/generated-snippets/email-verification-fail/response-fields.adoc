@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+status+`
+|`+Number+`
+|Http Status
+
+|`+code+`
+|`+String+`
+|Error Code
+
+|`+message+`
+|`+String+`
+|Error Message
+
+|===

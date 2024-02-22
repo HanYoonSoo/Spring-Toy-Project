@@ -5,38 +5,25 @@ import com.hanyoonsoo.springtoy.global.ObjectMapperUtils;
 import com.hanyoonsoo.springtoy.global.ResultActionsUtils;
 import com.hanyoonsoo.springtoy.global.UserResponseSnippet;
 import com.hanyoonsoo.springtoy.module.dto.*;
+import com.hanyoonsoo.springtoy.module.dto.auth.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
 import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
-import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetailService;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
 import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
-import com.hanyoonsoo.springtoy.module.repository.UserRepository;
 import com.hanyoonsoo.springtoy.module.service.UserService;
 import com.hanyoonsoo.springtoy.stubdata.StubData;
-import com.hanyoonsoo.springtoy.stubdata.WithMockCustomUser;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.MultiValueMapAdapter;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getRequestPreProcessor;
@@ -60,9 +47,6 @@ public class UserIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private AES128Config aes128Config;
-
-    @Autowired
-    private UserRepository userRepository;
 
     private UserPatchDto patchDto;
 
@@ -138,7 +122,7 @@ public class UserIntegrationTest extends BaseIntegrationTest {
 
         actions
                 .andExpect(status().isOk())
-                .andDo(document("patch-member",
+                .andDo(document("patch-user",
                         getRequestPreProcessor(),
                         getResponsePreProcessor(),
                         UserResponseSnippet.getPatchSnippet(),

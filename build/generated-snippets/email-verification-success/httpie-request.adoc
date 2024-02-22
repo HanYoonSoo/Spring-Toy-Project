@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ http POST 'http://localhost:8080/users/emails/verifications' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTI4LCJpYXQiOjE3MDg1ODcxMjh9.NAYf3AW6_hKctafDWpb6_4P63dErg0LDdRej_F9dRiY' \
+    'Refresh:BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxCxnwWUOKxUiCZ80yr1MR31lA4ZrK23NzLvfUyizMmESZ3fHVmNxgNxJEtbg1r48Yc7hldUirVE4rLcfma/j2mqRWU2ViOlrNMxEqOldW56xwA659q60Wo71dhh8LeASvw=='
+----

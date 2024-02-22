@@ -1,0 +1,48 @@
+|===
+|Path|Type|Description
+
+|`+data[]+`
+|`+Array+`
+|결과 데이터
+
+|`+data[].itemId+`
+|`+Number+`
+|아이템 ID
+
+|`+data[].name+`
+|`+String+`
+|아이템 이름
+
+|`+data[].price+`
+|`+Number+`
+|아이템 가격
+
+|`+data[].stockQuantity+`
+|`+Number+`
+|아이템 재고
+
+|`+data[].director+`
+|`+String+`
+|영화 감독
+
+|`+data[].actor+`
+|`+String+`
+|영화 배우
+
+|`+data[].author+`
+|`+String+`
+|책 저자
+
+|`+data[].isbn+`
+|`+String+`
+|책 ISBN 번호
+
+|`+data[].artist+`
+|`+String+`
+|음반 아티스트
+
+|`+data[].etc+`
+|`+String+`
+|음반 기타 정보
+
+|===

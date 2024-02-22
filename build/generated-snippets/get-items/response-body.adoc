@@ -1,0 +1,27 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : [ {
+    "itemId" : 6,
+    "name" : "test1",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "director" : "abc",
+    "actor" : "abc"
+  }, {
+    "itemId" : 7,
+    "name" : "test1",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "author" : "abc",
+    "isbn" : "abc"
+  }, {
+    "itemId" : 8,
+    "name" : "test1",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "artist" : "abc",
+    "etc" : "abc"
+  } ]
+}
+----

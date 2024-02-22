@@ -1,11 +1,11 @@
 package com.hanyoonsoo.springtoy.stubdata;
 
-import com.hanyoonsoo.springtoy.module.dto.LoginDto;
-import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
-import com.hanyoonsoo.springtoy.module.dto.UserDto;
-import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
+import com.hanyoonsoo.springtoy.module.dto.*;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginResponse;
 import com.hanyoonsoo.springtoy.module.entity.Address;
 import com.hanyoonsoo.springtoy.module.entity.Gender;
+import com.hanyoonsoo.springtoy.module.entity.OrderStatus;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
 import org.springframework.stereotype.Component;
@@ -38,6 +38,30 @@ public class StubData {
 
         public static UserPatchDto getPatchDto() {
             return new UserPatchDto("test2", new Address("test2", "12345", "12345"));
+        }
+    }
+
+    public static class MockItem extends StubData{
+        public static ItemRequestDto.BookRequestDto getBookDto(){
+            return new ItemRequestDto.BookRequestDto("book", 1000, 1000, "book", "book");
+        }
+
+        public static ItemRequestDto.AlbumRequestDto getAlbumDto(){
+            return new ItemRequestDto.AlbumRequestDto("album", 1000, 1000, "album", "album");
+        }
+
+        public static ItemRequestDto.MovieRequestDto getMovieDto(){
+            return new ItemRequestDto.MovieRequestDto("movie", 1000, 1000, "movie", "movie");
+        }
+
+        public static ItemRequestDto updateItemDto(){
+            return new ItemRequestDto("test2", 2000, 2000);
+        }
+    }
+
+    public static class MockOrder extends StubData{
+        public static OrderSearchDto orderSearchDto(){
+            return new OrderSearchDto("test1", OrderStatus.ORDER);
         }
     }
 }

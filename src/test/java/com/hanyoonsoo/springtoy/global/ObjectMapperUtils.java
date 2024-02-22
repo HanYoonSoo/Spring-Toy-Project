@@ -1,14 +1,15 @@
 package com.hanyoonsoo.springtoy.global;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.hanyoonsoo.springtoy.module.dto.LoginResponse;
+import com.hanyoonsoo.springtoy.module.dto.ItemDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.LoginResponse;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
-import org.apache.catalina.connector.Response;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.io.UnsupportedEncodingException;
@@ -39,5 +40,10 @@ public class ObjectMapperUtils {
     public static LoginResponse actionsSingleResponseToLoginDto(ResultActions actions) throws Exception {
         String response = actions.andReturn().getResponse().getContentAsString();
         return objectMapper.registerModule(new JavaTimeModule()).readValue(response, LoginResponse.class);
+    }
+
+    public static SingleResponseDto<ItemDto> actionsSingleResponseToItemDto(ResultActions actions) throws UnsupportedEncodingException, JsonProcessingException {
+        String response = actions.andReturn().getResponse().getContentAsString();
+        return objectMapper.registerModule(new JavaTimeModule()).readValue(response, new TypeReference<SingleResponseDto<ItemDto>>() {});
     }
 }

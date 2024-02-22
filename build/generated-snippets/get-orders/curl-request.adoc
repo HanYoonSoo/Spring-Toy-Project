@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/orders?itemName=&orderStatus=ORDER' -i -X GET \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NjA1NTQzLCJpYXQiOjE3MDg2MDM3NDN9.Qch1vmXhEnmeVCjTlRP_OU-kLYbJvLQ1tTkoZDHOGEc' \
+    -H 'Refresh: cHmlLATMMsU30JttcaEIvxv2bbH3XT7vSDFyeA84Xkd04jRmegUKT3MCgPKUfhylcngnA9TE35UrTBv+fMJnnuruWi1qfl5jJadzqk0PHqQApJ5UQ1QKuAnUhkzzocfS+voZPB3axbx6pinybbd6M5Aey3EpMZemCV4rMru5183kwWqf+pEe9KOLF/wFr9g6xy1aRdhu1i7S85k0oMQKnw=='
+----

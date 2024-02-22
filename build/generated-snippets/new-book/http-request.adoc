@@ -1,0 +1,17 @@
+[source,http,options="nowrap"]
+----
+POST /items/new/book HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTIzLCJpYXQiOjE3MDg1ODcxMjN9.6E0S3tH-p61GiHgI62p5xHpAE6V5G4OJq4VgselAHl4
+Refresh: BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxLOPZovR6nuHMwpJGUAjqBJh0Xr3bJ1y+jmCCvw1PeqqRv8FiM8ra2/NkEgiU3WPLKzgYfa2UG962T+AOYOgA7kO6YpM15sfjm8k+EUGpL1000n6onx6HS1rUELKPHR1xA==
+Content-Length: 104
+Host: localhost:8080
+
+{
+  "name" : "test1",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "author" : "abc",
+  "isbn" : "abc"
+}
+----

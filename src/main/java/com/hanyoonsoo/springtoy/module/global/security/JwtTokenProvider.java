@@ -1,8 +1,8 @@
 package com.hanyoonsoo.springtoy.module.global.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hanyoonsoo.springtoy.module.dto.Response;
-import com.hanyoonsoo.springtoy.module.dto.TokenDto;
+import com.hanyoonsoo.springtoy.module.dto.auth.Response;
+import com.hanyoonsoo.springtoy.module.dto.auth.TokenDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;

@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.itemId+`
+|`+Number+`
+|아이템 ID
+
+|`+data.name+`
+|`+String+`
+|책 이름
+
+|`+data.price+`
+|`+Number+`
+|책 가격
+
+|`+data.stockQuantity+`
+|`+Number+`
+|책 재고
+
+|`+data.author+`
+|`+String+`
+|책 저자
+
+|`+data.isbn+`
+|`+String+`
+|책 식별번호
+
+|===

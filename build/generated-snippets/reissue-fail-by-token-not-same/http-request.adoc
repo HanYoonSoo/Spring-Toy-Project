@@ -2,7 +2,7 @@
 ----
 PATCH /auth/reissue HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Refresh: 3Y8RtpJFbCFLQMN+xJhWQBODE4nORrrlS2/4TihlRZa628UOxWZT+bNbOPsBhDKkU7ayIs0IthbdjsYbG3pRmzp6XPvXN0E0EDbT2viA+EDiCp5YQx4SDdPPpUpUsuYkXPhEak0ETIXLGwhneDFOrLZK2JM5mTCRal4u0m5HqYye4QA6oQeFubDrt/LOfgApNHLXUpVNZwPzoQcqO7w6eA==
+Refresh: BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxLOPZovR6nuHMwpJGUAjqBJh0Xr3bJ1y+jmCCvw1PeqqRv8FiM8ra2/NkEgiU3WPLKzgYfa2UG962T+AOYOgA7kO6YpM15sfjm8k+EUGpL1000n6onx6HS1rUELKPHR1xA==
 Host: localhost:8080
 
 ----

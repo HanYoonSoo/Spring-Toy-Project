@@ -4,14 +4,13 @@ HTTP/1.1 200 OK
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4MzUyMDY3LCJpYXQiOjE3MDgzNTAyNjd9.shrkyeJnRQP7GhOF9OmbeOLMxFIe-Vt8O0Rb0Xxymzk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTIyLCJpYXQiOjE3MDg1ODcxMjJ9.4XMY5CqP2eFpv5zZKT7AyNckdcIcGlaatHn4JRvWH7I
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-X-Frame-Options: DENY
 Content-Length: 32
 
 {"data":"Access Token reissued"}

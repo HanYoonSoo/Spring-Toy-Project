@@ -9,12 +9,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.*;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -23,6 +28,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
+@EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true)
 @RequiredArgsConstructor
 @Slf4j
 public class SecurityConfiguration {
@@ -31,17 +38,30 @@ public class SecurityConfiguration {
     private final UserService userService;
     private final AES128Config aes128Config;
     private final RedisService redisService;
-    private final PasswordEncoder passwordEncoder;
 
+    private static final List<String> EXCLUDE_URL =
+            List.of("/",
+                    "/h2",
+                    "/users/signup",
+                    "/auth/login",
+                    "/auth/reissue",
+                    "/docs/index.html",
+                    "/items");
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults());
+        http.headers((headerConfig) -> headerConfig.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+        http.csrf(AbstractHttpConfigurer::disable).cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()));
         http.formLogin(FormLoginConfigurer::disable).httpBasic(HttpBasicConfigurer::disable)
                 .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.exceptionHandling(configurer -> configurer.authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
                 .exceptionHandling(configurer -> configurer.accessDeniedHandler(new CustomAccessDenidedHandler()));
         http.apply(new CustomFilterConfigurer());
-        http.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
+        http.authorizeHttpRequests(
+                authorize -> authorize.requestMatchers(EXCLUDE_URL.stream()
+                                .map(AntPathRequestMatcher::new)
+                                .toArray(RequestMatcher[]::new)).permitAll()
+                .requestMatchers("/orders/**").hasRole("VERIFIED_USER")
+                        .anyRequest().hasAnyRole("USER", "VERIFIED_USER"));
 
         return http.build();
     }

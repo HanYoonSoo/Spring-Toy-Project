@@ -1,7 +1,7 @@
 package com.hanyoonsoo.springtoy.module.global.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hanyoonsoo.springtoy.module.dto.Response;
+import com.hanyoonsoo.springtoy.module.dto.auth.Response;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,8 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class LoginFailurHandler implements AuthenticationFailureHandler {

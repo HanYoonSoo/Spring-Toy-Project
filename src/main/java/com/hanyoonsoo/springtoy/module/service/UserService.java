@@ -1,5 +1,6 @@
 package com.hanyoonsoo.springtoy.module.service;
 
+import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
@@ -129,11 +130,12 @@ public class UserService {
         return EmailVerificationResult.of(authResult);
     }
 
-    private void updateUserEmailVerified(String email) {
+    public void updateUserEmailVerified(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if(user.isPresent()){
             User updateUser = user.get();
             updateUser.setVerify(true);
+            updateUser.setRole(Authority.ROLE_VERIFIED_USER);
         }
     }
 

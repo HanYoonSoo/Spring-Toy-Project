@@ -1,0 +1,9 @@
+[source,http,options="nowrap"]
+----
+POST /orders/1/cancel HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NjA5MzQyLCJpYXQiOjE3MDg2MDc1NDJ9.-W6fpYNVJJP9xzXolMlmfK7pRozyqALm2HliNH9ovA0
+Refresh: Mdbf5Hxp7UPRVPNiEGNcDkvYub9U4mBlmSaTy9+uhRqzFcCZmTX5D2/xovR0IM2wm2Cd+WQaSgi6ESAF58TVz5VNJcA0ksMB5BgdLcEtObWs56Ppfzaf+gFPxcYFuMPOzqpf/nxeekZfLZo89sCKvgVS20TLfS/32KCxmNv3vzpJrwaYfExBsIf27Z4FL5CpJcAic2mdMW3JjeBl3x4HEQ==
+Host: localhost:8080
+
+----

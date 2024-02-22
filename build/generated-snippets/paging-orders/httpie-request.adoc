@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/orders/pages?limit=100' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NjA2NjM3LCJpYXQiOjE3MDg2MDQ4Mzd9.ouXyF7WNRCdenGf2Ui3mmXuH146bcrYXuTGO-ad_gYc' \
+    'Refresh:TWvDLUVb0IYIiPPJNEMIjosUBhuYwwI9/DSjxM+tTHtWKtQaQtXwJ4HidOmMF1cHk6xmuBvUZBiOCVezqlldzzB+kKVKAIyionbiUPIakoAamh0siqY1vvPUPISvc9o3VeXQgl6quU7hE3Aqzj/1buT5dadlY3QAnuaIfFxktHvAGV4c2vv80znF3BVP1541M41oFQpEYavXmJ+H0YEBCA=='
+----

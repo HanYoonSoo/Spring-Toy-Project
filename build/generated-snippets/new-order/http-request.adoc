@@ -1,0 +1,9 @@
+[source,http,options="nowrap"]
+----
+POST /orders HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NjA1MDUwLCJpYXQiOjE3MDg2MDMyNTB9.lLsav-Jm-IR68XrfPCSpAKrcDNasfVI2wWxZ-aRNpEY
+Refresh: Lhk8ebHBPpkFEGSJQYI3vLeid0MMHucdrfrmUroj8EEE3nxqJ85zUr51iKMhi2F0qUCD+5wSSEQsMbn2bGViVS8YU4caj49488g46aAih3ra+3fFe5LZsj4MCDFOS9H5d3wxF/pGGf7x66TOUws8byAQW8PNpzSuKibk/yAzzenNSBWpA+FLjpuotOiLxtRur5PXJMNqmtPxwvo898fucg==
+Host: localhost:8080
+
+----
