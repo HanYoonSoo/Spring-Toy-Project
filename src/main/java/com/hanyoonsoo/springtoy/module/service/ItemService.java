@@ -76,6 +76,7 @@ public class ItemService {
         }
     }
 
+    @Transactional
     public String deleteItem(Long itemId) {
         itemRepository.delete(
                 itemRepository.findById(itemId).orElseThrow(() -> new BusinessLogicException(ErrorCode.ITEM_NOT_FOUND))
