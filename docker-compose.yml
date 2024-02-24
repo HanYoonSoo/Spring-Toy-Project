@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 6379:6379
+    networks:
+      - my_network
 
 
   prod:
@@ -19,6 +21,8 @@ services:
       - TZ=Asia/Seoul
     depends_on:
       - redis
+    networks:
+      - my_network
 
   dev:
     container_name: dev
