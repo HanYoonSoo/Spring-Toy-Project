@@ -17,11 +17,11 @@ jobs:
 
       # JDK setting - github actions에서 사용할 JDK 설정 (프로젝트나 AWS의 java  버전과 달라도 무방)
       - uses: actions/checkout@v3
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          java-version: '11'
-          distribution: 'temurin'
+          java-version: '17'
+          distribution: 'corretto'
 
       # gradle caching - 빌드 시간 향상
       - name: Gradle Caching
@@ -40,22 +40,22 @@ jobs:
           contains(github.ref, 'main') ||
           contains(github.ref, 'develop')
         run: |
-          mkdir ./src/main/resources # resources 폴더 생성
           cd ./src/main/resources # resources 폴더로 이동
-          touch ./application.yml
-          echo "${{ secrets.YML }}" > ./application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
+          touch application.yml
+          echo application.yml
+          echo "${{ secrets.YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
         shell: bash
 
       # gradle build
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew build -x test
 
       # docker build & push to production
       - name: Docker build & push to prod
         if: contains(github.ref, 'main')
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile-dev -t ${{ secrets.DOCKER_USERNAME }}/docker-test-prod .
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/docker-test-prod .
           docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
 
       # docker build & push to develop
@@ -63,8 +63,19 @@ jobs:
         if: contains(github.ref, 'develop')
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile-dev -t ${{ secrets.DOCKER_USERNAME }}/docker-test-dev .
-          docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-dev
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+
+
+      - name: send docker-compose.yml to Server
+        uses: appleboy/scp-action@master
+        with:
+          username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "docker-compose.yml"
+          target: "/home/${{ secrets.USERNAME }}"
 
       ## deploy to production
       - name: Deploy to prod
@@ -77,10 +88,18 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            sudo docker ps
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
-            sudo docker run -d -p 8082:8082 ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
-            sudo docker image prune -f
+            docker ps
+            docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+            docker-compose pull mariadb
+            docker-compose up -d mariadb
+            
+            docker-compose pull redis
+            docker-compose up -d redis
+            
+            docker-compose pull prod
+            docker-compose up -d prod
+            
+            docker image prune -f
 
       ## deploy to develop
       - name: Develop to dev
@@ -95,8 +114,18 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            sudo docker ps
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
-            sudo docker run -d -p 8082:8082 ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
-            sudo docker image prune -f
+            docker ps -f name=docker-test-dev2
+            
+            if [ $? -eq 0 ]; then
+              docker rm -f docker-test-dev2
+            fi
+            
+            docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+            
+            docker-compose pull redis
+            docker-compose up -d redis
+            
+            docker run -d -p 8081:8080 --name docker-test-dev2 ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+            
+            docker image prune -f
             

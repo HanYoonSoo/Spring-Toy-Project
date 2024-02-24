@@ -1,9 +1,14 @@
 spring: #띄어쓰기 없음
-  datasource: #띄어쓰기 2칸
-    url: jdbc:h2:tcp://localhost/~/IdeaProjects/springtoy #4칸
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+#  datasource: #띄어쓰기 2칸
+#    url: jdbc:h2:tcp://localhost/~/IdeaProjects/springtoy #4칸
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+  datasource:
+    url: jdbc:mysql://192.168.55.215:3306/springtoy?characterEncoding=UTF-8
+    username: root # mariadb의 기본 사용자 이름입니다. 환경에 따라 변경하실 수 있습니다.
+    password: root    # mariadb의 비밀번호를 설정하셨다면 여기에 입력하세요.
+    driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: localhost
     port: 6379
@@ -26,7 +31,7 @@ spring: #띄어쓰기 없음
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         # show_sql: true
