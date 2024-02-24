@@ -97,7 +97,7 @@ dependencies {
     implementation 'org.springframework:spring-context-support:6.0.7'
     implementation 'com.sun.mail:jakarta.mail:2.0.1'
 
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
 }
 tasks.named('test') {
