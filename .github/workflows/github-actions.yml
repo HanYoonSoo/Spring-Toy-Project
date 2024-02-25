@@ -35,15 +35,22 @@ jobs:
             ${{ runner.os }}-gradle-
 
       # yml 파일 생성 - application.yml
-      - name: make application.yml
-        if: |
-          contains(github.ref, 'main') ||
-          contains(github.ref, 'develop')
+      - name: make application-prod.yml
+        if: github.ref == 'refs/heads/main'
         run: |
           cd ./src/main/resources # resources 폴더로 이동
           touch application.yml
           echo application.yml
-          echo "${{ secrets.YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
+          echo "${{ secrets.PROD_YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
+        shell: bash
+
+      - name: make application-dev.yml
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          cd ./src/main/resources # resources 폴더로 이동
+          touch application.yml
+          echo application.yml
+          echo "${{ secrets.DEV_YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
         shell: bash
 
       # gradle build
