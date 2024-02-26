@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.transaction.TestTransaction;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest // Test를 위한 Application Context를 로딩하며 여러가지 속성 제공
 @AutoConfigureMockMvc // @WebMvcTest가 아닌 @SpringBootTest 어노테이션을 사용하며 MockMvc를 이용한 테스트를 위한 어노테이션
 @AutoConfigureRestDocs // Spring Rest Docs를 사용하기 위해 MockMvc 빈을 커스터마이즈.
-//@ActiveProfiles("test")
+@ActiveProfiles("test")
 //@WebMvcTest <- Web 계층만을 테스트할 때 사용하는 어노테이션, Web 계층 테스트에 필요한 Bean들만 등록(Security 함께 진행)
 @ExtendWith(RestDocumentationExtension.class)
 public class BaseIntegrationTest {

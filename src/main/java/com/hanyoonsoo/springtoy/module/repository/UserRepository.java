@@ -1,6 +1,7 @@
 package com.hanyoonsoo.springtoy.module.repository;
 
 
+import com.hanyoonsoo.springtoy.module.entity.Image;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,8 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     void deleteByEmail(String email);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.isVerify = true WHERE u.email = :email")
-    void updateVerified(@Param("email") String email);
+    @Query("select u from User u join fetch u.images where u.email = :email")
+    Optional<User> findUserWithImages(String email);
+
 }

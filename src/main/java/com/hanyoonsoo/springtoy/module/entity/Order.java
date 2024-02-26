@@ -17,7 +17,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-@SQLDelete(sql = "UPDATE order SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE order SET deleted = true WHERE order_id = ?")
 @Where(clause = "deleted = false")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "orders")

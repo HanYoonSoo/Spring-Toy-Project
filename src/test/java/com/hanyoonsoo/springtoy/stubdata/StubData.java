@@ -8,6 +8,7 @@ import com.hanyoonsoo.springtoy.module.entity.Gender;
 import com.hanyoonsoo.springtoy.module.entity.OrderStatus;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -63,5 +64,12 @@ public class StubData {
         public static OrderSearchDto orderSearchDto(){
             return new OrderSearchDto("test1", OrderStatus.ORDER);
         }
+    }
+
+    public static class CustomMultipartFile {
+        @Getter
+        static final String IMAGE_URL =
+                "https://s3.ap-northeast-2.amazonaws.com/imagetest.file.bucket/image/example.png";
+
     }
 }

@@ -55,7 +55,7 @@ dependencies {
     testImplementation 'org.projectlombok:lombok:1.18.28'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
@@ -98,6 +98,9 @@ dependencies {
     implementation 'com.sun.mail:jakarta.mail:2.0.1'
 
     runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // AWS S3 설정
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
 }
 tasks.named('test') {

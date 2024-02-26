@@ -17,6 +17,7 @@ import com.hanyoonsoo.springtoy.stubdata.StubData;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.restdocs.snippet.Snippet;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.util.UriComponentsBuilder;
 

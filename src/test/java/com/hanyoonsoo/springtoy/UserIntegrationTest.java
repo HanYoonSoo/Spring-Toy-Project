@@ -1,5 +1,8 @@
 package com.hanyoonsoo.springtoy;
 
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectResult;
 import com.hanyoonsoo.springtoy.global.BaseIntegrationTest;
 import com.hanyoonsoo.springtoy.global.ObjectMapperUtils;
 import com.hanyoonsoo.springtoy.global.ResultActionsUtils;
@@ -22,6 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
@@ -29,6 +34,8 @@ import java.util.Random;
 import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getRequestPreProcessor;
 import static com.hanyoonsoo.springtoy.global.ApiDocumentUtils.getResponsePreProcessor;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,14 +55,22 @@ public class UserIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private AES128Config aes128Config;
 
+    @Autowired
+    private AmazonS3Client amazonS3Client;
+
     private UserPatchDto patchDto;
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() throws MalformedURLException {
         UserDto.SignUp signUpDto = StubData.MockUser.getSignUpDto();
         userService.signUp(signUpDto);
 
         patchDto = StubData.MockUser.getPatchDto();
+
+        given(amazonS3Client.putObject(any(PutObjectRequest.class))).willReturn(new PutObjectResult());
+        given(amazonS3Client.getUrl(any(), any())).willReturn(
+                new URL("https://s3.ap-northeast-2.amazonaws.com/imagetest.file.bucket/image/example.png"));
+
     }
 
     @AfterEach

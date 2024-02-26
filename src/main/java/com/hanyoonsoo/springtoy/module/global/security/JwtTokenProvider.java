@@ -181,9 +181,9 @@ public class JwtTokenProvider {
 
     // Request Header에 Refresh Token 정보 추출
     public String resolveRefreshToken(HttpServletRequest request){
-        String bearerToken = request.getHeader(REFRESH_HEADER);
-        if(StringUtils.hasText(bearerToken)){
-            return bearerToken;
+        String refreshToken = request.getHeader(REFRESH_HEADER);
+        if(StringUtils.hasText(refreshToken)){
+            return refreshToken;
         }
 
         return null;

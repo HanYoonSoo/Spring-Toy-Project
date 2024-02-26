@@ -12,12 +12,13 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Getter @Setter
-@SQLDelete(sql = "UPDATE orderitem SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE orderitem SET deleted = true WHERE order_item_id = ?")
 @Where(clause = "deleted = false")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
     private Long id;
 
     @JsonIgnore

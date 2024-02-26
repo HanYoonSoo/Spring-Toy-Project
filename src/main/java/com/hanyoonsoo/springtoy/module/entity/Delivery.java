@@ -9,7 +9,7 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Getter @Setter
-@SQLDelete(sql = "UPDATE delivery SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE delivery SET deleted = true WHERE delivery_id = ?")
 @Where(clause = "deleted = false")
 public class Delivery extends BaseEntity{
 

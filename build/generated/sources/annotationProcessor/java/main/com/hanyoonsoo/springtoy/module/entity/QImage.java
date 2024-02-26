@@ -33,10 +33,6 @@ public class QImage extends EntityPathBase<Image> {
 
     public final StringPath imageUrl = createString("imageUrl");
 
-    public final StringPath originalFilename = createString("originalFilename");
-
-    public final StringPath storeFilename = createString("storeFilename");
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updated_at = _super.updated_at;
 

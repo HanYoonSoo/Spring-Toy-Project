@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-@SQLDelete(sql = "UPDATE user SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE user SET deleted = true WHERE user_id = ?")
 @Where(clause = "deleted = false")
 @Table(name = "users")
 public class User extends BaseEntity{
@@ -50,7 +50,7 @@ public class User extends BaseEntity{
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
 
 
@@ -65,5 +65,14 @@ public class User extends BaseEntity{
         user.setPassword(signUpDto.getPassword());
         user.setGender(signUpDto.getGender());
         return user;
+    }
+
+    public void addImage(Image image) {
+        getImages().add(image);
+        image.setUser(this);
+    }
+
+    public void removeImage(Image image) {
+        getImages().remove(image);
     }
 }

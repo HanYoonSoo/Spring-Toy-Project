@@ -2,8 +2,10 @@ package com.hanyoonsoo.springtoy.module.service;
 
 import com.hanyoonsoo.springtoy.module.constants.Authority;
 import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
+import com.hanyoonsoo.springtoy.module.dto.ImageDto;
 import com.hanyoonsoo.springtoy.module.dto.UserDto;
 import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
+import com.hanyoonsoo.springtoy.module.entity.Image;
 import com.hanyoonsoo.springtoy.module.entity.User;
 import com.hanyoonsoo.springtoy.module.global.config.EncryptHelper;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
@@ -15,13 +17,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.time.Duration;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -35,6 +40,7 @@ public class UserService {
     private final EncryptHelper encryptHelper;
     private final MailService mailService;
     private final RedisService redisService;
+    private final FileUploadService fileUploadService;
 
     @Value("${spring.mail.auth-code-expiration-millis}")
     private long authCodeExpirationMillis;
@@ -130,6 +136,7 @@ public class UserService {
         return EmailVerificationResult.of(authResult);
     }
 
+    @Transactional
     public void updateUserEmailVerified(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if(user.isPresent()){
@@ -148,15 +155,53 @@ public class UserService {
         return userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new);
     }
 
+    @Transactional
     public void deleteUser(String email) {
         userRepository.deleteByEmail(email);
     }
 
+    @Transactional
     public UserDto.Response updateUser(String email, UserPatchDto updateDto) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new BusinessLogicException(ErrorCode.USER_NOT_FOUND));
         user.setAddress(updateDto.getAddress());
         user.setNickName(updateDto.getNickname());
 
         return new UserDto.Response(user);
+    }
+
+
+    public List<ImageDto> findUserWithImages(String email) {
+        User user = userRepository.findUserWithImages(email).orElseThrow(() -> new BusinessLogicException(ErrorCode.USER_NOT_FOUND));
+
+        List<ImageDto> result = user.getImages().stream()
+                .map(i -> new ImageDto(i.getImageUrl()))
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
+    @Transactional
+    public ImageDto update(MultipartFile multipartFile, String imageUrl) {
+
+        return fileUploadService.update(multipartFile, imageUrl);
+    }
+
+    @Transactional
+    public ImageDto profileImageSave(String email, MultipartFile multipartFile) {
+        User user = this.findUserByEmail(email);
+
+        return fileUploadService.save(user, multipartFile);
+    }
+
+    @Transactional
+    public List<ImageDto> profileImagesSave(String email, List<MultipartFile> multipartFiles) {
+        User user = this.findUserByEmail(email);
+        return fileUploadService.save(user, multipartFiles);
+    }
+
+    @Transactional
+    public String delete(String email, String imageUrl) {
+        User user = this.findUserByEmail(email);
+        return fileUploadService.delete(user, imageUrl);
     }
 }

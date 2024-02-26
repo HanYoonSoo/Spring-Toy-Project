@@ -38,7 +38,13 @@ public enum ErrorCode {
     ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "해당하는 아이템을 찾을 수 없습니다."),
     ORDER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당하는 주문을 찾을 수 없습니다."),
 
-    INVALID_ITEM(HttpStatus.NO_CONTENT, "존재하지 않는 아이템 종류입니다.");
+    INVALID_ITEM(HttpStatus.NO_CONTENT, "존재하지 않는 아이템 종류입니다."),
+
+    EXTENSION_IS_NOT_VALID(HttpStatus.NOT_ACCEPTABLE, "지원하지 않는 확장자입니다. JPEG, PNG 파일을 이용해주세요"),
+    FAILED_TO_UPLOAD_FILE(HttpStatus.BAD_REQUEST, "이미지 파일 업로드가 불가합니다"),
+    FAILED_TO_DELETE_FILE(HttpStatus.INTERNAL_SERVER_ERROR, "파일 삭제를 실패했습니다."),
+    IMAGE_NOT_FOUND(HttpStatus.INTERNAL_SERVER_ERROR, "파일 삭제를 실패했습니다."),
+    ;
 
     private final HttpStatus httpStatus;
     private final String message;
