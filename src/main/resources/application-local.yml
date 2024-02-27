@@ -49,12 +49,12 @@ aes:
 cloud:
   aws:
     s3:
-      bucket: imagetest.file.bucket
+      bucket: 
     region:
       static: ap-northeast-2
       auto: false
     stack:
       auto: false
     key:
-      access-key: AKIAQ3EGTANCRSRNWT7P
-      secret-key: 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
+      access-key: 
+      secret-key: 
