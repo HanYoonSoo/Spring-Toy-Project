@@ -3,25 +3,25 @@
 {
   "data" : [ {
     "itemId" : 6,
-    "name" : "test1",
+    "name" : "movie",
     "price" : 1000,
     "stockQuantity" : 1000,
-    "director" : "abc",
-    "actor" : "abc"
+    "director" : "movie",
+    "actor" : "movie"
   }, {
     "itemId" : 7,
-    "name" : "test1",
+    "name" : "book",
     "price" : 1000,
     "stockQuantity" : 1000,
-    "author" : "abc",
-    "isbn" : "abc"
+    "author" : "book",
+    "isbn" : "book"
   }, {
     "itemId" : 8,
-    "name" : "test1",
+    "name" : "album",
     "price" : 1000,
     "stockQuantity" : 1000,
-    "artist" : "abc",
-    "etc" : "abc"
+    "artist" : "album",
+    "etc" : "album"
   } ]
 }
 ----

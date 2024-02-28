@@ -1,13 +1,12 @@
 package com.hanyoonsoo.springtoy.module.service;
 
 import com.hanyoonsoo.springtoy.module.constants.Authority;
-import com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult;
+import com.hanyoonsoo.springtoy.module.dto.user.EmailVerificationResult;
 import com.hanyoonsoo.springtoy.module.dto.ImageDto;
-import com.hanyoonsoo.springtoy.module.dto.UserDto;
-import com.hanyoonsoo.springtoy.module.dto.UserPatchDto;
-import com.hanyoonsoo.springtoy.module.entity.Image;
+import com.hanyoonsoo.springtoy.module.dto.user.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.user.UserPatchDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
-import com.hanyoonsoo.springtoy.module.global.config.EncryptHelper;
+import com.hanyoonsoo.springtoy.module.global.config.encryption.EncryptHelper;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
 import com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException;
 import com.hanyoonsoo.springtoy.module.global.exception.ErrorCode;
@@ -90,6 +89,7 @@ public class UserService {
                 authCode, Duration.ofMillis(this.authCodeExpirationMillis));
     }
 
+
     private void checkDuplicatedEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if(user.isPresent()){
@@ -130,28 +130,22 @@ public class UserService {
         boolean authResult = redisService.checkExistsValue(redisAuthCode) && redisAuthCode.equals(authCode);
 
         if(authResult){
-            updateUserEmailVerified(email);
+            System.out.println(email + "dsfsdfsdf");
+            User updateUser = findUserByEmail(email);
+            updateUser.setVerify(true);
+            updateUser.setRole(Authority.ROLE_VERIFIED_USER);
         }
 
         return EmailVerificationResult.of(authResult);
     }
-
-    @Transactional
-    public void updateUserEmailVerified(String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if(user.isPresent()){
-            User updateUser = user.get();
-            updateUser.setVerify(true);
-            updateUser.setRole(Authority.ROLE_VERIFIED_USER);
-        }
-    }
-
 
     public UserDto.Response userDtoResponse(String email) {
         return new UserDto.Response(userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new));
     }
 
     public User findUserByEmail(String email){
+        System.out.println(email);
+        userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new);
         return userRepository.findUserByEmail(email).orElseThrow(NoSuchElementException::new);
     }
 

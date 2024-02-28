@@ -1,10 +1,10 @@
 [source,json,options="nowrap"]
 ----
 {
-  "name" : "test1",
+  "name" : "movie",
   "price" : 1000,
   "stockQuantity" : 1000,
-  "director" : "abc",
-  "actor" : "abc"
+  "director" : "movie",
+  "actor" : "movie"
 }
 ----

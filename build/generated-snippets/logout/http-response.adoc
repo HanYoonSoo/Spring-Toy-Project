@@ -10,7 +10,9 @@ X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-Content-Length: 34
+Content-Length: 40
 
-{"data":"Logged out successfully"}
+{
+  "data" : "Logged out successfully"
+}
 ----

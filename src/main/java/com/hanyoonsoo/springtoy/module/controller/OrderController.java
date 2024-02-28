@@ -1,7 +1,7 @@
 package com.hanyoonsoo.springtoy.module.controller;
 
-import com.hanyoonsoo.springtoy.module.dto.OrderDto;
-import com.hanyoonsoo.springtoy.module.dto.OrderResponseDto;
+import com.hanyoonsoo.springtoy.module.dto.order.OrderDto;
+import com.hanyoonsoo.springtoy.module.dto.order.OrderResponseDto;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.entity.OrderStatus;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;

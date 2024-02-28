@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hanyoonsoo.springtoy.module.dto.auth.LoginDto;
 import com.hanyoonsoo.springtoy.module.dto.auth.TokenDto;
 import com.hanyoonsoo.springtoy.module.entity.User;
-import com.hanyoonsoo.springtoy.module.global.config.AES128Config;
+import com.hanyoonsoo.springtoy.module.global.config.encryption.AES128Config;
 import com.hanyoonsoo.springtoy.module.global.config.redis.RedisService;
 import com.hanyoonsoo.springtoy.module.service.UserService;
 import jakarta.servlet.FilterChain;

@@ -3,11 +3,11 @@
 {
   "data" : {
     "itemId" : 1,
-    "name" : "test1",
+    "name" : "album",
     "price" : 1000,
     "stockQuantity" : 1000,
-    "artist" : "abc",
-    "etc" : "abc"
+    "artist" : "album",
+    "etc" : "album"
   }
 }
 ----

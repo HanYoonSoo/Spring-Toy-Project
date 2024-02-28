@@ -35,7 +35,7 @@ public class FileUploadService {
         for(MultipartFile multipartFile : multipartFiles){
             verifiedExtension(multipartFile);
             String fullPath = MultipartUtil.createPath(multipartFile);
-            String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile);
+            String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile).toString();
             imageUrls.add(new ImageDto(imageUrl));
             user.addImage(Image.createImage(user, imageUrl));
         }
@@ -46,7 +46,7 @@ public class FileUploadService {
     public ImageDto save(User user, MultipartFile multipartFile){
         verifiedExtension(multipartFile);
         String fullPath = MultipartUtil.createPath(multipartFile);
-        String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile);
+        String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile).toString();
         user.addImage(Image.createImage(user, imageUrl));
         return new ImageDto(imageUrl);
     }
@@ -77,7 +77,7 @@ public class FileUploadService {
 
         verifiedExtension(multipartFile);
         String fullPath = MultipartUtil.createPath(multipartFile);
-        String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile);
+        String imageUrl = amazonS3ResourceStorage.store(fullPath, multipartFile).toString();
 
         image.setImageUrl(imageUrl);
 

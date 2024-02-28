@@ -1,7 +1,7 @@
 package com.hanyoonsoo.springtoy.module.service;
 
-import com.hanyoonsoo.springtoy.module.dto.ItemDto;
-import com.hanyoonsoo.springtoy.module.dto.ItemRequestDto;
+import com.hanyoonsoo.springtoy.module.dto.item.ItemDto;
+import com.hanyoonsoo.springtoy.module.dto.item.ItemRequestDto;
 import com.hanyoonsoo.springtoy.module.entity.item.Album;
 import com.hanyoonsoo.springtoy.module.entity.item.Book;
 import com.hanyoonsoo.springtoy.module.entity.item.Item;

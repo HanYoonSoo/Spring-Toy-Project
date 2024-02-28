@@ -102,6 +102,9 @@ dependencies {
     // AWS S3 설정
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
+    // Oauth2 의존성 추가
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 }
 tasks.named('test') {
     useJUnitPlatform()

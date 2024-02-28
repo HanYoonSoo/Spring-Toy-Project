@@ -1,9 +1,14 @@
 package com.hanyoonsoo.springtoy.module.controller;
 
 import com.hanyoonsoo.springtoy.module.dto.*;
+import com.hanyoonsoo.springtoy.module.dto.user.EmailVerificationResult;
+import com.hanyoonsoo.springtoy.module.dto.user.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.user.UserPatchDto;
 import com.hanyoonsoo.springtoy.module.global.security.CustomUserDetails;
-import com.hanyoonsoo.springtoy.module.service.FileUploadService;
+import com.hanyoonsoo.springtoy.module.global.security.JwtTokenProvider;
+import com.hanyoonsoo.springtoy.module.service.AuthService;
 import com.hanyoonsoo.springtoy.module.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +18,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -23,7 +27,8 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final FileUploadService fileUploadService;
+    private final AuthService authService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/signup")
     public ResponseEntity signUp(@Valid @RequestBody UserDto.SignUp signUpDto){
@@ -58,9 +63,10 @@ public class UserController {
 
     @PostMapping("/emails/verifications")
     public ResponseEntity verificationEmail(@RequestParam("email") @Valid String email,
-                                            @RequestParam("code") String authCode){
+                                            @RequestParam("code") String authCode,
+                                            HttpServletRequest request){
         EmailVerificationResult response = userService.verifiedCode(email, authCode);
-
+        authService.logout(jwtTokenProvider.resolveRefreshToken(request), jwtTokenProvider.resolveAccessToken(request));
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 

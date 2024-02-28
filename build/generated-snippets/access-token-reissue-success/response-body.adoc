@@ -1,4 +1,6 @@
 [source,json,options="nowrap"]
 ----
-{"data":"Access Token reissued"}
+{
+  "data" : "Access Token reissued"
+}
 ----

@@ -1,7 +1,7 @@
 package com.hanyoonsoo.springtoy.module.controller;
 
-import com.hanyoonsoo.springtoy.module.dto.ItemDto;
-import com.hanyoonsoo.springtoy.module.dto.ItemRequestDto;
+import com.hanyoonsoo.springtoy.module.dto.item.ItemDto;
+import com.hanyoonsoo.springtoy.module.dto.item.ItemRequestDto;
 import com.hanyoonsoo.springtoy.module.dto.SingleResponseDto;
 import com.hanyoonsoo.springtoy.module.service.ItemService;
 import jakarta.validation.Valid;

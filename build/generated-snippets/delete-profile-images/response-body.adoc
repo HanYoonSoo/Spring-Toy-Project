@@ -1,0 +1,6 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : "이미지 삭제 성공했습니다."
+}
+----

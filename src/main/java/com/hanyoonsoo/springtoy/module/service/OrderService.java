@@ -1,7 +1,7 @@
 package com.hanyoonsoo.springtoy.module.service;
 
-import com.hanyoonsoo.springtoy.module.dto.OrderDto;
-import com.hanyoonsoo.springtoy.module.dto.OrderResponseDto;
+import com.hanyoonsoo.springtoy.module.dto.order.OrderDto;
+import com.hanyoonsoo.springtoy.module.dto.order.OrderResponseDto;
 import com.hanyoonsoo.springtoy.module.entity.Delivery;
 import com.hanyoonsoo.springtoy.module.entity.Order;
 import com.hanyoonsoo.springtoy.module.entity.OrderItem;
@@ -18,7 +18,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

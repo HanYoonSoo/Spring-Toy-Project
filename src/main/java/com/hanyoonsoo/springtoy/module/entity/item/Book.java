@@ -1,10 +1,8 @@
 package com.hanyoonsoo.springtoy.module.entity.item;
 
-import com.hanyoonsoo.springtoy.module.dto.ItemDto;
-import com.hanyoonsoo.springtoy.module.dto.ItemRequestDto;
+import com.hanyoonsoo.springtoy.module.dto.item.ItemRequestDto;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

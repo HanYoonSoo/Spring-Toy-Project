@@ -2,5 +2,5 @@
 ----
 $ http PATCH 'http://localhost:8080/auth/reissue' \
     'Content-Type:application/json;charset=UTF-8' \
-    'Refresh:BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxLOPZovR6nuHMwpJGUAjqBJh0Xr3bJ1y+jmCCvw1PeqqRv8FiM8ra2/NkEgiU3WPLKzgYfa2UG962T+AOYOgA7kO6YpM15sfjm8k+EUGpL1000n6onx6HS1rUELKPHR1xA=='
+    'Refresh:mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw=='
 ----

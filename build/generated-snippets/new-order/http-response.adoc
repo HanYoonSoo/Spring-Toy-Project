@@ -10,12 +10,12 @@ X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-Content-Length: 324
+Content-Length: 322
 
 {
   "data" : {
     "nickName" : "test",
-    "orderDate" : "2024-02-22T21:00:50.498153",
+    "orderDate" : "2024-02-27T22:21:08.99117",
     "orderStatus" : "ORDER",
     "address" : {
       "city" : "test",
@@ -23,7 +23,7 @@ Content-Length: 324
       "zipcode" : "1234"
     },
     "orderItems" : [ {
-      "itemName" : "test1",
+      "itemName" : "book",
       "orderPrice" : 1000,
       "count" : 3
     } ]

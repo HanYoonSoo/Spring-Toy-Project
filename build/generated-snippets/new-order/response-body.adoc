@@ -3,7 +3,7 @@
 {
   "data" : {
     "nickName" : "test",
-    "orderDate" : "2024-02-22T21:00:50.498153",
+    "orderDate" : "2024-02-27T22:21:08.99117",
     "orderStatus" : "ORDER",
     "address" : {
       "city" : "test",
@@ -11,7 +11,7 @@
       "zipcode" : "1234"
     },
     "orderItems" : [ {
-      "itemName" : "test1",
+      "itemName" : "book",
       "orderPrice" : 1000,
       "count" : 3
     } ]

@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+nickname+`
+|`+String+`
+|회원 닉네임
+
+|`+address+`
+|`+Object+`
+|회원 주소
+
+|`+address.city+`
+|`+String+`
+|도시
+
+|`+address.street+`
+|`+String+`
+|도로주소
+
+|`+address.zipcode+`
+|`+String+`
+|우편번호
+
+|===

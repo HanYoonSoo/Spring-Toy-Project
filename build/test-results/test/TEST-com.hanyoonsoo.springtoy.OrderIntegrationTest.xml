@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hanyoonsoo.springtoy.OrderIntegrationTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-27T13:21:08" hostname="han-yunsuui-MacBookPro.local" time="0.678">
+  <properties/>
+  <testcase name="OrderStatus 별 조회 테스트" classname="com.hanyoonsoo.springtoy.OrderIntegrationTest" time="0.224"/>
+  <testcase name="Order Paging 조회 테스트" classname="com.hanyoonsoo.springtoy.OrderIntegrationTest" time="0.111"/>
+  <testcase name="Order ItemName별 조회 테스트" classname="com.hanyoonsoo.springtoy.OrderIntegrationTest" time="0.126"/>
+  <testcase name="Order 생성 테스트" classname="com.hanyoonsoo.springtoy.OrderIntegrationTest" time="0.1"/>
+  <testcase name="Order 취소 테스트" classname="com.hanyoonsoo.springtoy.OrderIntegrationTest" time="0.114"/>
+  <system-out><![CDATA[2024-02-27T22:21:08.434+09:00  INFO 86262 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hanyoonsoo.springtoy.OrderIntegrationTest]: OrderIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-27T22:21:08.436+09:00  INFO 86262 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hanyoonsoo.springtoy.SpringtoyApplication for test class com.hanyoonsoo.springtoy.OrderIntegrationTest
+2024-02-27T22:21:08.440+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.517+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.519+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.520+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.522+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:08.527+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:08.530+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.536+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for delivery_seq
+2024-02-27T22:21:08.538+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.539+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.541+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.543+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,artist,etc,dtype,item_id) 
+    values
+        (?,?,?,?,?,'A',default)
+2024-02-27T22:21:08.545+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.546+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for delivery_seq
+2024-02-27T22:21:08.547+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.548+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.549+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.552+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_VERIFIED_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_VERIFIED_USER, password=null, nickName=null)
+2024-02-27T22:21:08.552+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.642+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        author=?,
+        isbn=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.643+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        artist=?,
+        etc=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.645+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        distinct o1_0.order_id,
+        o1_0.create_at,
+        o1_0.deleted,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.create_at,
+        d1_0.deleted,
+        d1_0.delivery_status,
+        d1_0.updated_at,
+        o1_0.order_date,
+        o2_0.order_id,
+        o2_0.order_item_id,
+        o2_0.count,
+        o2_0.create_at,
+        o2_0.deleted,
+        i1_0.item_id,
+        i1_0.dtype,
+        i1_0.name,
+        i1_0.price,
+        i1_0.stock_quantity,
+        i1_0.artist,
+        i1_0.etc,
+        i1_0.author,
+        i1_0.isbn,
+        i1_0.actor,
+        i1_0.director,
+        o2_0.order_price,
+        o2_0.updated_at,
+        o1_0.order_status,
+        o1_0.updated_at,
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        orders o1_0 
+    join
+        users u1_0 
+            on u1_0.user_id=o1_0.user_id 
+            and (
+                u1_0.deleted = false
+            ) 
+    join
+        delivery d1_0 
+            on d1_0.delivery_id=o1_0.delivery_id 
+            and (
+                d1_0.deleted = false
+            ) 
+    join
+        order_item o2_0 
+            on o1_0.order_id=o2_0.order_id 
+            and (
+                o2_0.deleted = false
+            )  
+    join
+        item i1_0 
+            on i1_0.item_id=o2_0.item_id 
+    where
+        (
+            o1_0.deleted = false
+        ) 
+        and o1_0.order_status=? 
+        and u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /orders
+       Parameters = {itemName=[null], orderStatus=[ORDER]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.rDlAbgKO5UhiF22HtIfRqNLs-0kkfgcya6Sk6mQogHU", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.OrderController
+           Method = com.hanyoonsoo.springtoy.module.controller.OrderController#order(CustomUserDetails, String, OrderStatus)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":[{"orderId":1,"nickName":"test","orderDate":"2024-02-27T22:21:08.531327","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"book","orderPrice":1000,"count":3}]},{"orderId":2,"nickName":"test","orderDate":"2024-02-27T22:21:08.546696","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"album","orderPrice":1000,"count":2}]}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.665+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.742+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.744+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.745+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.746+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:08.748+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:08.748+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.749+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.750+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.751+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.752+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,artist,etc,dtype,item_id) 
+    values
+        (?,?,?,?,?,'A',default)
+2024-02-27T22:21:08.753+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.754+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.755+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.755+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.760+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_VERIFIED_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_VERIFIED_USER, password=null, nickName=null)
+2024-02-27T22:21:08.760+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.764+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        author=?,
+        isbn=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.765+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        artist=?,
+        etc=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.765+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        o1_0.order_id,
+        o1_0.create_at,
+        o1_0.deleted,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.create_at,
+        d1_0.deleted,
+        d1_0.delivery_status,
+        d1_0.updated_at,
+        o1_0.order_date,
+        o1_0.order_status,
+        o1_0.updated_at,
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        orders o1_0 
+    join
+        users u1_0 
+            on u1_0.user_id=o1_0.user_id 
+            and (
+                u1_0.deleted = false
+            ) 
+    join
+        delivery d1_0 
+            on d1_0.delivery_id=o1_0.delivery_id 
+            and (
+                d1_0.deleted = false
+            ) 
+    where
+        (
+            o1_0.deleted = false
+        ) 
+        and u1_0.email=? 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /orders/pages
+       Parameters = {limit=[100]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.rDlAbgKO5UhiF22HtIfRqNLs-0kkfgcya6Sk6mQogHU", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.OrderController
+           Method = com.hanyoonsoo.springtoy.module.controller.OrderController#orderWithPage(CustomUserDetails, int, int)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":[{"orderId":3,"nickName":"test","orderDate":"2024-02-27T22:21:08.749553","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"book","orderPrice":1000,"count":3}]},{"orderId":4,"nickName":"test","orderDate":"2024-02-27T22:21:08.754144","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"album","orderPrice":1000,"count":2}]}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.776+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.853+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.855+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.856+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.858+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:08.859+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:08.859+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.860+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.861+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.862+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.863+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,artist,etc,dtype,item_id) 
+    values
+        (?,?,?,?,?,'A',default)
+2024-02-27T22:21:08.864+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.865+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.865+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.866+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.869+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_VERIFIED_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_VERIFIED_USER, password=null, nickName=null)
+2024-02-27T22:21:08.869+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.884+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        author=?,
+        isbn=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.885+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        artist=?,
+        etc=? 
+    where
+        item_id=?
+2024-02-27T22:21:08.886+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        distinct o1_0.order_id,
+        o1_0.create_at,
+        o1_0.deleted,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.create_at,
+        d1_0.deleted,
+        d1_0.delivery_status,
+        d1_0.updated_at,
+        o1_0.order_date,
+        o2_0.order_id,
+        o2_0.order_item_id,
+        o2_0.count,
+        o2_0.create_at,
+        o2_0.deleted,
+        i1_0.item_id,
+        i1_0.dtype,
+        i1_0.name,
+        i1_0.price,
+        i1_0.stock_quantity,
+        i1_0.artist,
+        i1_0.etc,
+        i1_0.author,
+        i1_0.isbn,
+        i1_0.actor,
+        i1_0.director,
+        o2_0.order_price,
+        o2_0.updated_at,
+        o1_0.order_status,
+        o1_0.updated_at,
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        orders o1_0 
+    join
+        users u1_0 
+            on u1_0.user_id=o1_0.user_id 
+            and (
+                u1_0.deleted = false
+            ) 
+    join
+        delivery d1_0 
+            on d1_0.delivery_id=o1_0.delivery_id 
+            and (
+                d1_0.deleted = false
+            ) 
+    join
+        order_item o2_0 
+            on o1_0.order_id=o2_0.order_id 
+            and (
+                o2_0.deleted = false
+            )  
+    join
+        item i1_0 
+            on i1_0.item_id=o2_0.item_id 
+    where
+        (
+            o1_0.deleted = false
+        ) 
+        and i1_0.name like ? escape '!' 
+        and u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /orders
+       Parameters = {itemName=[book], orderStatus=[null]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.rDlAbgKO5UhiF22HtIfRqNLs-0kkfgcya6Sk6mQogHU", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.OrderController
+           Method = com.hanyoonsoo.springtoy.module.controller.OrderController#order(CustomUserDetails, String, OrderStatus)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":[{"orderId":5,"nickName":"test","orderDate":"2024-02-27T22:21:08.860498","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"book","orderPrice":1000,"count":3}]}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.903+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.980+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.983+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.984+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.985+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:08.988+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_VERIFIED_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_VERIFIED_USER, password=null, nickName=null)
+2024-02-27T22:21:08.988+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.989+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:08.990+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.991+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:08.992+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.992+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /orders
+       Parameters = {itemId=[15], count=[3]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.rDlAbgKO5UhiF22HtIfRqNLs-0kkfgcya6Sk6mQogHU", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.OrderController
+           Method = com.hanyoonsoo.springtoy.module.controller.OrderController#order(CustomUserDetails, Long, int)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"nickName":"test","orderDate":"2024-02-27T22:21:08.99117","orderStatus":"ORDER","address":{"city":"test","street":"1234","zipcode":"1234"},"orderItems":[{"itemName":"book","orderPrice":1000,"count":3}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:09.004+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.081+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:09.085+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.088+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.089+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:09.091+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:09.091+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.092+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city,street,zipcode,create_at,deleted,delivery_status,updated_at,delivery_id) 
+    values
+        (?,?,?,?,?,?,?,?)
+2024-02-27T22:21:09.094+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (create_at,deleted,delivery_id,order_date,order_status,updated_at,user_id,order_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:09.095+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count,create_at,deleted,item_id,order_id,order_price,updated_at,order_item_id) 
+    values
+        (?,?,?,?,?,?,?,default)
+2024-02-27T22:21:09.097+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        author=?,
+        isbn=? 
+    where
+        item_id=?
+2024-02-27T22:21:09.098+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        distinct o1_0.order_id,
+        o1_0.create_at,
+        o1_0.deleted,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.create_at,
+        d1_0.deleted,
+        d1_0.delivery_status,
+        d1_0.updated_at,
+        o1_0.order_date,
+        o2_0.order_id,
+        o2_0.order_item_id,
+        o2_0.count,
+        o2_0.create_at,
+        o2_0.deleted,
+        i1_0.item_id,
+        i1_0.dtype,
+        i1_0.name,
+        i1_0.price,
+        i1_0.stock_quantity,
+        i1_0.artist,
+        i1_0.etc,
+        i1_0.author,
+        i1_0.isbn,
+        i1_0.actor,
+        i1_0.director,
+        o2_0.order_price,
+        o2_0.updated_at,
+        o1_0.order_status,
+        o1_0.updated_at,
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        orders o1_0 
+    join
+        users u1_0 
+            on u1_0.user_id=o1_0.user_id 
+            and (
+                u1_0.deleted = false
+            ) 
+    join
+        delivery d1_0 
+            on d1_0.delivery_id=o1_0.delivery_id 
+            and (
+                d1_0.deleted = false
+            ) 
+    join
+        order_item o2_0 
+            on o1_0.order_id=o2_0.order_id 
+            and (
+                o2_0.deleted = false
+            )  
+    join
+        item i1_0 
+            on i1_0.item_id=o2_0.item_id 
+    where
+        (
+            o1_0.deleted = false
+        ) 
+        and i1_0.name like ? escape '!' 
+        and u1_0.email=?
+2024-02-27T22:21:09.103+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_VERIFIED_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_VERIFIED_USER, password=null, nickName=null)
+2024-02-27T22:21:09.103+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /orders/8/cancel
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9WRVJJRklFRF9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY5LCJpYXQiOjE3MDkwNDAwNjl9.gbWMoZsnNgBQSAn6EMSWBJwNzsPJvMQNeEGCRwaBckU", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUkzbJ6NiAUmudLR1PYLQgu6tBTszOfZmb+f8LFxHoVTNnfMYX0ATVg440sdgqguBcts/NH7DyS0e02Ro9JeRKzOlbeXdM6k2MaynUGJdyqguZBrceBclAzDqS46AwahaJog=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.OrderController
+           Method = com.hanyoonsoo.springtoy.module.controller.OrderController#orderCancel(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 202
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":"주문을 취소했습니다."}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:09.106+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        price=?,
+        stock_quantity=?,
+        author=?,
+        isbn=? 
+    where
+        item_id=?
+2024-02-27T22:21:09.107+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        orders 
+    set
+        deleted=?,
+        delivery_id=?,
+        order_date=?,
+        order_status=?,
+        updated_at=?,
+        user_id=? 
+    where
+        order_id=?
+2024-02-27T22:21:09.108+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        distinct o1_0.order_id,
+        o1_0.create_at,
+        o1_0.deleted,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.create_at,
+        d1_0.deleted,
+        d1_0.delivery_status,
+        d1_0.updated_at,
+        o1_0.order_date,
+        o2_0.order_id,
+        o2_0.order_item_id,
+        o2_0.count,
+        o2_0.create_at,
+        o2_0.deleted,
+        i1_0.item_id,
+        i1_0.dtype,
+        i1_0.name,
+        i1_0.price,
+        i1_0.stock_quantity,
+        i1_0.artist,
+        i1_0.etc,
+        i1_0.author,
+        i1_0.isbn,
+        i1_0.actor,
+        i1_0.director,
+        o2_0.order_price,
+        o2_0.updated_at,
+        o1_0.order_status,
+        o1_0.updated_at,
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        orders o1_0 
+    join
+        users u1_0 
+            on u1_0.user_id=o1_0.user_id 
+            and (
+                u1_0.deleted = false
+            ) 
+    join
+        delivery d1_0 
+            on d1_0.delivery_id=o1_0.delivery_id 
+            and (
+                d1_0.deleted = false
+            ) 
+    join
+        order_item o2_0 
+            on o1_0.order_id=o2_0.order_id 
+            and (
+                o2_0.deleted = false
+            )  
+    join
+        item i1_0 
+            on i1_0.item_id=o2_0.item_id 
+    where
+        (
+            o1_0.deleted = false
+        ) 
+        and i1_0.name like ? escape '!' 
+        and u1_0.email=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,8 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : [ {
+    "imageUrl" : "https://imagetest.file.bucket.s3.ap-northeast-2.amazonaws.com/images/819ba76d-a6ae-4d57-ba0d-8227c63fd45d.jpeg"
+  } ]
+}
+----

@@ -1,13 +1,13 @@
 [source,bash]
 ----
 $ echo '{
-  "name" : "test1",
+  "name" : "book",
   "price" : 1000,
   "stockQuantity" : 1000,
-  "author" : "abc",
-  "isbn" : "abc"
+  "author" : "book",
+  "isbn" : "book"
 }' | http POST 'http://localhost:8080/items/new/book' \
     'Content-Type:application/json;charset=UTF-8' \
-    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA4NTg4OTIzLCJpYXQiOjE3MDg1ODcxMjN9.6E0S3tH-p61GiHgI62p5xHpAE6V5G4OJq4VgselAHl4' \
-    'Refresh:BkONVJuaOWdHF2TEx1g+bKlxxby1GilmIFa4DINCFOsbvmxWm+FtJokLnsydzcCZ3ZPlJms0c7fhRD8NIVtQxLOPZovR6nuHMwpJGUAjqBJh0Xr3bJ1y+jmCCvw1PeqqRv8FiM8ra2/NkEgiU3WPLKzgYfa2UG962T+AOYOgA7kO6YpM15sfjm8k+EUGpL1000n6onx6HS1rUELKPHR1xA=='
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs' \
+    'Refresh:mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=='
 ----

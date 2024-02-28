@@ -1,0 +1,9 @@
+[source,http,options="nowrap"]
+----
+DELETE /users/image HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDM1NDc2LCJpYXQiOjE3MDkwMzM2NzZ9.tsM2gLcXbFejamh2TexDuD4Lth3d6fU-_UwWbeGqAwM
+Refresh: okFCieXIUW0ZeCEQN19SNmwJvP8Xlhsz/SR+wukSZgIbfC9xBrKKCvmZY7BtM0jlRjje1Omw+kIwkTQ3C3WN1pbEqpXkIw8EHrzEV84t5K/48kGjEB2VNuYQvPZK5UJPbT5xEQcJWk9Ygv8IO7e+rFOFaxdCZyYv5KqyRQmjFjSakp0cf0MweDsl6kGx+vafFFy/kKhSjcXKpF8EOoX4JA==
+Host: localhost:8080
+
+----

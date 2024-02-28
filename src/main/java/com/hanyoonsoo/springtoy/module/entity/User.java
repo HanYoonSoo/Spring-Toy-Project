@@ -2,13 +2,12 @@ package com.hanyoonsoo.springtoy.module.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hanyoonsoo.springtoy.module.constants.Authority;
-import com.hanyoonsoo.springtoy.module.dto.UserDto;
+import com.hanyoonsoo.springtoy.module.dto.user.UserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;

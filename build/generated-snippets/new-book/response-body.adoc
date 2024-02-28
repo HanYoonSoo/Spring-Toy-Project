@@ -3,11 +3,11 @@
 {
   "data" : {
     "itemId" : 4,
-    "name" : "test1",
+    "name" : "book",
     "price" : 1000,
     "stockQuantity" : 1000,
-    "author" : "abc",
-    "isbn" : "abc"
+    "author" : "book",
+    "isbn" : "book"
   }
 }
 ----
