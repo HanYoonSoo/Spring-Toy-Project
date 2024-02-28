@@ -11,7 +11,7 @@ spring: #띄어쓰기 없음
     host: smtp.gmail.com
     port: 587
     username: hdbstn3055@gmail.com
-    password: iczwmjkofvgmufjz
+    password: 
     properties:
       mail:
         smtp:
