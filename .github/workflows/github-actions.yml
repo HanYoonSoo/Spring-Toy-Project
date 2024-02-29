@@ -1,0 +1,138 @@
+# github repository actions 페이지에 나타날 이름
+name: CI/CD using github actions & docker
+
+# event trigger
+# main이나 develop 브랜치에 push가 되었을 때 실행
+on:
+  push:
+    branches: ["main", "develop"]
+
+permissions:
+  contents: read
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest
+    steps:
+
+      # JDK setting - github actions에서 사용할 JDK 설정 (프로젝트나 AWS의 java  버전과 달라도 무방)
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      # gradle caching - 빌드 시간 향상
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # yml 파일 생성 - application.yml
+      - name: make application-prod.yml
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd ./src/main/resources # resources 폴더로 이동
+          touch application.yml
+          echo application.yml
+          echo "${{ secrets.PROD_YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
+        shell: bash
+
+      - name: make application-dev.yml
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          cd ./src/main/resources # resources 폴더로 이동
+          touch application.yml
+          echo application.yml
+          echo "${{ secrets.DEV_YML }}" > application.yml # github actions에서 설정한 값을 application.yml 파일에 쓰기
+        shell: bash
+
+      # gradle build
+      - name: Build with Gradle
+        run: ./gradlew build -x test
+
+      # docker build & push to production
+      - name: Docker build & push to prod
+        if: contains(github.ref, 'main')
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/docker-test-prod .
+          docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+
+      # docker build & push to develop
+      - name: Docker build & push to dev
+        if: contains(github.ref, 'develop')
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+
+
+      - name: send docker-compose.yml to Server
+        uses: appleboy/scp-action@master
+        with:
+          username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "docker-compose.yml"
+          target: "/home/${{ secrets.USERNAME }}"
+
+      ## deploy to production
+      - name: Deploy to prod
+        uses: appleboy/ssh-action@master
+        id: deploy-prod
+        if: contains(github.ref, 'main')
+        with:
+          host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            docker ps
+            docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+            docker-compose pull mariadb
+            docker-compose up -d mariadb
+            
+            docker-compose pull redis
+            docker-compose up -d redis
+            
+            docker-compose pull prod
+            docker-compose up -d prod
+            
+            docker image prune -f
+
+      ## deploy to develop
+      - name: Develop to dev
+        uses: appleboy/ssh-action@master
+        id: deploy-dev
+        if: contains(github.ref, 'develop')
+        with:
+          host: ${{ secrets.HOST_DEV }} # EC2 퍼블릭 IPv4 DNS
+          username: ${{ secrets.USERNAME }} # ubuntu
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            docker ps -f name=docker-test-dev2
+            
+            if [ $? -eq 0 ]; then
+              docker rm -f docker-test-dev2
+            fi
+            
+            docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+            
+            docker-compose pull redis
+            docker-compose up -d redis
+            
+            docker run -d -p 8081:8080 --name docker-test-dev2 ${{ secrets.DOCKER_USERNAME }}/docker-test-dev2
+            
+            docker image prune -f
+            

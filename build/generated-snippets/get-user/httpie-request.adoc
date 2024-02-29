@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/users' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODczLCJpYXQiOjE3MDkwNDAwNzN9.kKK2tC2IhERxy1_SpeEg8As1LJvDyQYM1yPsDobovtg' \
+    'Refresh:mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk+rfjnEu53bXEgt/ccmJZhNRQeC9ZsgxldoNRUZUV0Ed6FIRyJHQZQGUlfGk5CrXP4RAM9k+7+4ietYc0juVpwY+b49DDHZlJkEH6AiVO1qpIn3fAAJqEcc06vGdkVy6zw=='
+----

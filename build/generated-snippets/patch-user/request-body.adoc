@@ -1,0 +1,11 @@
+[source,json,options="nowrap"]
+----
+{
+  "nickname" : "test2",
+  "address" : {
+    "city" : "test2",
+    "street" : "12345",
+    "zipcode" : "12345"
+  }
+}
+----

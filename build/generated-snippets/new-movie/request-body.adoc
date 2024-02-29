@@ -1,0 +1,10 @@
+[source,json,options="nowrap"]
+----
+{
+  "name" : "movie",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "director" : "movie",
+  "actor" : "movie"
+}
+----

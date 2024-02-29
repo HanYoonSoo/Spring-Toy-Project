@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/users/images' -i -X GET \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDM2MTcyLCJpYXQiOjE3MDkwMzQzNzJ9.zbXVvabu2vaXgy4kNvJZawWW4sNStzR3f9rlOivWSP4' \
+    -H 'Refresh: GAMlgtgCtvHDcp7avOK+qwp80IltTSp1OI6E9UGLQc46jbkDHCmsmHmZo5mcwQ+cYZSZ/E8oK1VeEkcI88gZNugH0Xe4ALOHTq0mGvekpyWug3Bbo6EfddI7bzzfvLFLFLvmIix2+yq5ik19YBzGIbmP5exK1fCwGNWCtlFo3v47q+h8uIQvs/Gc2aEmhZjcyF2iEghsUNp1VbeJFin5QQ=='
+----

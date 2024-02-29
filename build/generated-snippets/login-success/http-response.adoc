@@ -1,0 +1,21 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY3LCJpYXQiOjE3MDkwNDAwNjd9.dZE1Jp5jtRgeFPvAW0MY8JLi57L8sO1bWRiHx5dz6KQ
+Refresh: mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw==
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Content-Length: 56
+
+{
+  "email" : "email@gmail.com",
+  "nickName" : "test"
+}
+----

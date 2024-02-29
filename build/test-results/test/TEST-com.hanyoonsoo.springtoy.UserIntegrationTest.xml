@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hanyoonsoo.springtoy.UserIntegrationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-02-27T13:21:09" hostname="han-yunsuui-MacBookPro.local" time="8.497">
+  <properties/>
+  <testcase name="이메일 코드 검증 실패" classname="com.hanyoonsoo.springtoy.UserIntegrationTest" time="4.476"/>
+  <testcase name="회원 업데이트" classname="com.hanyoonsoo.springtoy.UserIntegrationTest" time="0.115"/>
+  <testcase name="회원 조회" classname="com.hanyoonsoo.springtoy.UserIntegrationTest" time="0.093"/>
+  <testcase name="이메일 코드 검증 성공" classname="com.hanyoonsoo.springtoy.UserIntegrationTest" time="3.812"/>
+  <system-out><![CDATA[2024-02-27T22:21:09.137+09:00  INFO 86262 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hanyoonsoo.springtoy.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-27T22:21:09.139+09:00  INFO 86262 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hanyoonsoo.springtoy.SpringtoyApplication for test class com.hanyoonsoo.springtoy.UserIntegrationTest
+2024-02-27T22:21:09.144+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.225+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:09.227+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:09.230+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.588+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:13.588+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:13.594+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.597+09:00 ERROR 86262 --- [    Test worker] .h.s.m.g.e.BusinessLogicExceptionHandler : BusinessException
+
+com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException: null
+	at com.hanyoonsoo.springtoy.module.dto.EmailVerificationResult.of(EmailVerificationResult.java:26) ~[main/:na]
+	at com.hanyoonsoo.springtoy.module.service.UserService.verifiedCode(UserService.java:136) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:751) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.16.jar:6.0.16]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.16.jar:6.0.16]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:751) ~[spring-aop-6.0.16.jar:6.0.16]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-6.0.16.jar:6.0.16]
+	at com.hanyoonsoo.springtoy.module.service.UserService$$SpringCGLIB$$0.verifiedCode(<generated>) ~[main/:na]
+	at com.hanyoonsoo.springtoy.module.controller.UserController.verificationEmail(UserController.java:62) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547) ~[jakarta.servlet-api-6.0.0.jar:6.0.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.0.16.jar:6.0.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614) ~[jakarta.servlet-api-6.0.0.jar:6.0.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at com.hanyoonsoo.springtoy.module.global.security.JwtVerificationFilter.doFilterInternal(JwtVerificationFilter.java:74) ~[main/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225) ~[spring-security-config-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.16.jar:6.0.16]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.16.jar:6.0.16]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.0.16.jar:6.0.16]
+	at com.hanyoonsoo.springtoy.global.ResultActionsUtils.postRequestWithAuthCodeAndToken(ResultActionsUtils.java:65) ~[test/:na]
+	at com.hanyoonsoo.springtoy.UserIntegrationTest.emailCodeFailTest(UserIntegrationTest.java:198) ~[test/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727) ~[junit-platform-commons-1.9.3.jar:1.9.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.9.3.jar:5.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.9.3.jar:1.9.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) ~[na:na]
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) ~[na:na]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) ~[na:na]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) ~[na:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
+
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /users/emails/verifications
+       Parameters = {email=[hdbstn3055@gmail.com], code=[828243]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY5LCJpYXQiOjE3MDkwNDAwNjl9.zPzHBgQKHrrcKs5pM2ND9K4LCPFXY5xcXp8aPKA9agk", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUkzbJ6NiAUmudLR1PYLQgu6tBTszOfZmb+f8LFxHoVTNnfMYX0ATVg440sdgqguBcts/NH7DyS0e02Ro9JeRKzOlbeXdM6k2MaynUGJdyqguZBrceBclAzDqS46AwahaJog=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.UserController
+           Method = com.hanyoonsoo.springtoy.module.controller.UserController#verificationEmail(String, String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = com.hanyoonsoo.springtoy.module.global.exception.BusinessLogicException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"status":400,"code":"INVALID_CODE","message":"잘못된 코드입니다."}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:13.614+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.620+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.703+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:13.705+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.709+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:13.709+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:13.715+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = PATCH
+      Request URI = /users
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODczLCJpYXQiOjE3MDkwNDAwNzN9.kKK2tC2IhERxy1_SpeEg8As1LJvDyQYM1yPsDobovtg", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk+rfjnEu53bXEgt/ccmJZhNRQeC9ZsgxldoNRUZUV0Ed6FIRyJHQZQGUlfGk5CrXP4RAM9k+7+4ietYc0juVpwY+b49DDHZlJkEH6AiVO1qpIn3fAAJqEcc06vGdkVy6zw==", Content-Length:"82"]
+             Body = {"nickname":"test2","address":{"city":"test2","street":"12345","zipcode":"12345"}}
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.UserController
+           Method = com.hanyoonsoo.springtoy.module.controller.UserController#patchUser(CustomUserDetails, UserPatchDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"email":"email@gmail.com","name":"test","nickname":"test2","address":{"city":"test2","street":"12345","zipcode":"12345"},"gender":"남자"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+{"data":{"email":"email@gmail.com","name":"test","nickname":"test2","address":{"city":"test2","street":"12345","zipcode":"12345"},"gender":"남자"}}
+2024-02-27T22:21:13.730+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        deleted=?,
+        email=?,
+        gender=?,
+        is_verify=?,
+        name=?,
+        nick_name=?,
+        password=?,
+        role=?,
+        updated_at=? 
+    where
+        user_id=?
+2024-02-27T22:21:13.731+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.734+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.811+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:13.813+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.816+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:13.816+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:13.817+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /users
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODczLCJpYXQiOjE3MDkwNDAwNzN9.kKK2tC2IhERxy1_SpeEg8As1LJvDyQYM1yPsDobovtg", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk+rfjnEu53bXEgt/ccmJZhNRQeC9ZsgxldoNRUZUV0Ed6FIRyJHQZQGUlfGk5CrXP4RAM9k+7+4ietYc0juVpwY+b49DDHZlJkEH6AiVO1qpIn3fAAJqEcc06vGdkVy6zw=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.UserController
+           Method = com.hanyoonsoo.springtoy.module.controller.UserController#getUser(CustomUserDetails)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"email":"email@gmail.com","name":"test","nickname":"test","address":{"city":"test","street":"1234","zipcode":"1234"},"gender":"남자"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:13.824+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.828+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.906+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:13.908+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:13.911+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:17.616+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:17.616+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:17.619+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:17.622+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /users/emails/verifications
+       Parameters = {email=[hdbstn3055@gmail.com], code=[438834]}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODczLCJpYXQiOjE3MDkwNDAwNzN9.kKK2tC2IhERxy1_SpeEg8As1LJvDyQYM1yPsDobovtg", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk+rfjnEu53bXEgt/ccmJZhNRQeC9ZsgxldoNRUZUV0Ed6FIRyJHQZQGUlfGk5CrXP4RAM9k+7+4ietYc0juVpwY+b49DDHZlJkEH6AiVO1qpIn3fAAJqEcc06vGdkVy6zw=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.UserController
+           Method = com.hanyoonsoo.springtoy.module.controller.UserController#verificationEmail(String, String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"message":"이메일 인증에 성공했습니다."}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:17.635+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

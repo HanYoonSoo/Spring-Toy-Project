@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/auth/reissue' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Refresh: mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw=='
+----

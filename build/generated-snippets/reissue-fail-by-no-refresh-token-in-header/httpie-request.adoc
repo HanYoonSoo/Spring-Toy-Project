@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http PATCH 'http://localhost:8080/auth/reissue' \
+    'Content-Type:application/json;charset=UTF-8'
+----

@@ -1,0 +1,39 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Content-Length: 436
+
+{
+  "data" : [ {
+    "itemId" : 6,
+    "name" : "movie",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "director" : "movie",
+    "actor" : "movie"
+  }, {
+    "itemId" : 7,
+    "name" : "book",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "author" : "book",
+    "isbn" : "book"
+  }, {
+    "itemId" : 8,
+    "name" : "album",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "artist" : "album",
+    "etc" : "album"
+  } ]
+}
+----

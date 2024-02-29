@@ -1,0 +1,13 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : {
+    "itemId" : 2,
+    "name" : "movie",
+    "price" : 1000,
+    "stockQuantity" : 1000,
+    "director" : "movie",
+    "actor" : "movie"
+  }
+}
+----

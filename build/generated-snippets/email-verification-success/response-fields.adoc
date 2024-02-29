@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.message+`
+|`+String+`
+|결과 메시지
+
+|===

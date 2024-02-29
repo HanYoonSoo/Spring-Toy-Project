@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hanyoonsoo.springtoy.ItemIntegrationTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-02-27T13:21:07" hostname="han-yunsuui-MacBookPro.local" time="0.682">
+  <properties/>
+  <testcase name="Album 생성 테스트" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.138"/>
+  <testcase name="Movie 생성 테스트" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.121"/>
+  <testcase name="Item 수정 테스트" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.115"/>
+  <testcase name="Book 생성 테스트" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.107"/>
+  <testcase name="Item 삭제 테스트" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.095"/>
+  <testcase name="Item 정보 받아오기" classname="com.hanyoonsoo.springtoy.ItemIntegrationTest" time="0.101"/>
+  <system-out><![CDATA[2024-02-27T22:21:07.744+09:00  INFO 86262 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hanyoonsoo.springtoy.ItemIntegrationTest]: ItemIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-27T22:21:07.747+09:00  INFO 86262 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hanyoonsoo.springtoy.SpringtoyApplication for test class com.hanyoonsoo.springtoy.ItemIntegrationTest
+2024-02-27T22:21:07.753+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:07.840+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:07.842+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:07.848+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:07.849+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:07.876+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,artist,etc,dtype,item_id) 
+    values
+        (?,?,?,?,?,'A',default)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /items/new/album
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY3LCJpYXQiOjE3MDkwNDAwNjd9.dZE1Jp5jtRgeFPvAW0MY8JLi57L8sO1bWRiHx5dz6KQ", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw==", Content-Length:"81"]
+             Body = {"name":"album","price":1000,"stockQuantity":1000,"artist":"album","etc":"album"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#newAlbum(AlbumRequestDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"itemId":1,"name":"album","price":1000,"stockQuantity":1000,"artist":"album","etc":"album"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:07.891+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:07.978+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:07.983+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:07.992+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:07.993+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:07.996+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,actor,director,dtype,item_id) 
+    values
+        (?,?,?,?,?,'M',default)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /items/new/movie
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY3LCJpYXQiOjE3MDkwNDAwNjd9.dZE1Jp5jtRgeFPvAW0MY8JLi57L8sO1bWRiHx5dz6KQ", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw==", Content-Length:"85"]
+             Body = {"name":"movie","price":1000,"stockQuantity":1000,"director":"movie","actor":"movie"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#newMovie(MovieRequestDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"itemId":2,"name":"movie","price":1000,"stockQuantity":1000,"director":"movie","actor":"movie"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.013+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.101+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.103+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.105+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,actor,director,dtype,item_id) 
+    values
+        (?,?,?,?,?,'M',default)
+2024-02-27T22:21:08.109+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:08.109+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /items/3/edit
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA==", Content-Length:"50"]
+             Body = {"name":"test2","price":2000,"stockQuantity":2000}
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#updateItem(Long, ItemRequestDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"itemId":3,"name":"test2","price":2000,"stockQuantity":2000}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.129+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.215+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.217+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.221+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:08.221+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.224+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /items/new/book
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA==", Content-Length:"79"]
+             Body = {"name":"book","price":1000,"stockQuantity":1000,"author":"book","isbn":"book"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#newBook(BookRequestDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":{"itemId":4,"name":"book","price":1000,"stockQuantity":1000,"author":"book","isbn":"book"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.237+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.315+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.317+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.319+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,actor,director,dtype,item_id) 
+    values
+        (?,?,?,?,?,'M',default)
+2024-02-27T22:21:08.322+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:08.322+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /items/5
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#deleteItem(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":"Item 삭제가 완료되었습니다."}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2024-02-27T22:21:08.333+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.411+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (city,street,zipcode,create_at,deleted,email,gender,is_verify,name,nick_name,password,role,updated_at,user_id) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,default)
+2024-02-27T22:21:08.413+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.user_id,
+        u1_0.city,
+        u1_0.street,
+        u1_0.zipcode,
+        u1_0.create_at,
+        u1_0.deleted,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.is_verify,
+        u1_0.name,
+        u1_0.nick_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        (
+            u1_0.deleted = false
+        ) 
+        and u1_0.email=?
+2024-02-27T22:21:08.415+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,actor,director,dtype,item_id) 
+    values
+        (?,?,?,?,?,'M',default)
+2024-02-27T22:21:08.415+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,author,isbn,dtype,item_id) 
+    values
+        (?,?,?,?,?,'B',default)
+2024-02-27T22:21:08.416+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name,price,stock_quantity,artist,etc,dtype,item_id) 
+    values
+        (?,?,?,?,?,'A',default)
+2024-02-27T22:21:08.418+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.security.JwtTokenProvider      : # AuthUser.getRoles 권한 체크 = [ROLE_USER]
+CustomUserDetails(id=null, email=email@gmail.com, role_str=ROLE_USER, password=null, nickName=null)
+2024-02-27T22:21:08.418+09:00  INFO 86262 --- [    Test worker] c.h.s.m.g.s.JwtVerificationFilter        : # Token verification success!
+2024-02-27T22:21:08.420+09:00 DEBUG 86262 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        i1_0.item_id,
+        i1_0.dtype,
+        i1_0.name,
+        i1_0.price,
+        i1_0.stock_quantity,
+        i1_0.artist,
+        i1_0.etc,
+        i1_0.author,
+        i1_0.isbn,
+        i1_0.actor,
+        i1_0.director 
+    from
+        item i1_0
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /items
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs", Refresh:"mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA=="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.hanyoonsoo.springtoy.module.controller.ItemController
+           Method = com.hanyoonsoo.springtoy.module.controller.ItemController#items()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0"]
+     Content type = application/json
+             Body = {"data":[{"itemId":6,"name":"movie","price":1000,"stockQuantity":1000,"director":"movie","actor":"movie"},{"itemId":7,"name":"book","price":1000,"stockQuantity":1000,"author":"book","isbn":"book"},{"itemId":8,"name":"album","price":1000,"stockQuantity":1000,"artist":"album","etc":"album"}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

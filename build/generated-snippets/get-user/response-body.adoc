@@ -1,0 +1,16 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : {
+    "email" : "email@gmail.com",
+    "name" : "test",
+    "nickname" : "test",
+    "address" : {
+      "city" : "test",
+      "street" : "1234",
+      "zipcode" : "1234"
+    },
+    "gender" : "남자"
+  }
+}
+----

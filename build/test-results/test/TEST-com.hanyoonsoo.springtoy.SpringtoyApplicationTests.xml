@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hanyoonsoo.springtoy.SpringtoyApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-27T13:21:09" hostname="han-yunsuui-MacBookPro.local" time="0.001">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.hanyoonsoo.springtoy.SpringtoyApplicationTests" time="0.001"/>
+  <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.8)
+
+2024-02-27T22:21:09.131+09:00  INFO 86262 --- [    Test worker] c.h.springtoy.SpringtoyApplicationTests  : Starting SpringtoyApplicationTests using Java 17.0.6 with PID 86262 (started by hanyoonsoo in /Users/hanyoonsoo/IdeaProjects/springtoy)
+2024-02-27T22:21:09.131+09:00  INFO 86262 --- [    Test worker] c.h.springtoy.SpringtoyApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2024-02-27T22:21:09.134+09:00  INFO 86262 --- [    Test worker] c.h.springtoy.SpringtoyApplicationTests  : Started SpringtoyApplicationTests in 0.015 seconds (process running for 6.931)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,10 @@
+[source,json,options="nowrap"]
+----
+{
+  "name" : "album",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "artist" : "album",
+  "etc" : "album"
+}
+----

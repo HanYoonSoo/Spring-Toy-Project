@@ -1,0 +1,320 @@
+= API 문서
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+
+
+== 서론
+
+진꿈청의 API 문서에 오신 것을 환영합니다!
+
+== 사용자 정보 API
+
+유저 정보 HTTP Request
+
+include::{snippets}/get-user/http-request.adoc[]
+
+유저 정보 HTTP Response 예시
+include::{snippets}/get-user/http-response.adoc[]
+
+유저 정보 Request Body 예시
+include::{snippets}/get-user/request-body.adoc[]
+
+유저 정보 Response Body 예시
+include::{snippets}/get-user/response-body.adoc[]
+
+유저 정보 Response Field 예시
+include::{snippets}/get-user/response-fields.adoc[]
+
+---
+
+업데이트 유저 HTTP Request
+
+include::{snippets}/patch-user/http-request.adoc[]
+
+업데이트 유저 HTTP Response 예시
+include::{snippets}/patch-user/http-response.adoc[]
+
+업데이트 유저 Request Body 예시
+include::{snippets}/patch-user/request-body.adoc[]
+
+업데이트 유저 Response Body 예시
+include::{snippets}/patch-user/response-body.adoc[]
+
+업데이트 유저 Response Field 예시
+include::{snippets}/patch-user/response-fields.adoc[]
+
+---
+
+이메일 인증 성공 HTTP Request
+
+include::{snippets}/email-verification-success/http-request.adoc[]
+
+이메일 인증 성공 HTTP Response 예시
+include::{snippets}/email-verification-success/http-response.adoc[]
+
+이메일 인증 성공 Request Body 예시
+include::{snippets}/email-verification-success/request-body.adoc[]
+
+이메일 인증 성공 Response Body 예시
+include::{snippets}/email-verification-success/response-body.adoc[]
+
+이메일 인증 성공 Response Field 예시
+include::{snippets}/email-verification-success/response-fields.adoc[]
+
+---
+
+이메일 인증 실패 HTTP Request 예시
+include::{snippets}/email-verification-fail/http-request.adoc[]
+
+이메일 인증 실패 HTTP Response 예시
+include::{snippets}/email-verification-fail/http-response.adoc[]
+
+이메일 인증 실패 Request Body 예시
+include::{snippets}/email-verification-fail/request-body.adoc[]
+
+이메일 인증 실패 Response Body 예시
+include::{snippets}/email-verification-fail/response-body.adoc[]
+
+이메일 인증 실패 Response Field 예시
+include::{snippets}/email-verification-fail/response-fields.adoc[]
+
+---
+
+== Auth API
+
+로그인 성공 HTTP Request 예시
+include::{snippets}/login-success/http-request.adoc[]
+
+로그인 성공 HTTP Response 예시
+include::{snippets}/login-success/http-response.adoc[]
+
+로그인 성공 Request Body 예시
+include::{snippets}/login-success/request-body.adoc[]
+
+로그인 성공 Response Body 예시
+include::{snippets}/login-success/response-body.adoc[]
+
+---
+
+로그아웃 HTTP Request 예시
+include::{snippets}/logout/http-request.adoc[]
+
+로그아웃 HTTP Response 예시
+include::{snippets}/logout/http-response.adoc[]
+
+로그아웃 Request Body 예시
+include::{snippets}/logout/request-body.adoc[]
+
+로그아웃 Response Body 예시
+include::{snippets}/logout/response-body.adoc[]
+
+로그아웃 Response Field 예시
+include::{snippets}/logout/response-fields.adoc[]
+
+---
+
+액세스 토큰 재발급 HTTP Request 예시
+include::{snippets}/access-token-reissue-success/http-request.adoc[]
+
+액세스 토큰 재발급 HTTP Response 예시
+include::{snippets}/access-token-reissue-success/http-response.adoc[]
+
+액세스 토큰 재발급 Request Body 예시
+include::{snippets}/access-token-reissue-success/request-body.adoc[]
+
+액세스 토큰 재발급 Response Body 예시
+include::{snippets}/access-token-reissue-success/response-body.adoc[]
+
+액세스 토큰 재발급 Response Field 예시
+include::{snippets}/access-token-reissue-success/response-fields.adoc[]
+
+== Item 정보 API
+
+책 추가 HTTP Request
+include::{snippets}/new-book/http-request.adoc[]
+
+책 추가 HTTP Response 예시
+include::{snippets}/new-book/http-response.adoc[]
+
+책 추가 Request Body 예시
+include::{snippets}/new-book/request-body.adoc[]
+
+책 추가 Response Body 예시
+include::{snippets}/new-book/response-body.adoc[]
+
+책 추가 Response Field 예시
+include::{snippets}/new-book/response-fields.adoc[]
+
+---
+
+앨범 추가 HTTP Request
+include::{snippets}/new-album/http-request.adoc[]
+
+앨범 추가 HTTP Response 예시
+include::{snippets}/new-album/http-response.adoc[]
+
+앨범 추가 Request Body 예시
+include::{snippets}/new-album/request-body.adoc[]
+
+앨범 추가 Response Body 예시
+include::{snippets}/new-album/response-body.adoc[]
+
+앨범 추가 Response Field 예시
+include::{snippets}/new-album/response-fields.adoc[]
+
+---
+
+영화 추가 HTTP Request
+include::{snippets}/new-movie/http-request.adoc[]
+
+영화 추가 HTTP Response 예시
+include::{snippets}/new-movie/http-response.adoc[]
+
+영화 추가 Request Body 예시
+include::{snippets}/new-movie/request-body.adoc[]
+
+영화 추가 Response Body 예시
+include::{snippets}/new-movie/response-body.adoc[]
+
+영화 추가 Response Field 예시
+include::{snippets}/new-movie/response-fields.adoc[]
+
+---
+
+아이템 목록 조회 HTTP Request
+include::{snippets}/get-items/http-request.adoc[]
+
+아이템 목록 조회 HTTP Response 예시
+include::{snippets}/get-items/http-response.adoc[]
+
+아이템 목록 조회 Request Body 예시
+include::{snippets}/get-items/request-body.adoc[]
+
+아이템 목록 조회 Response Body 예시
+include::{snippets}/get-items/response-body.adoc[]
+
+아이템 목록 조회 Response Field 예시
+include::{snippets}/get-items/response-fields.adoc[]
+
+---
+
+아이템 수정 HTTP Request
+include::{snippets}/update-item/http-request.adoc[]
+
+아이템 수정 HTTP Response 예시
+include::{snippets}/update-item/http-response.adoc[]
+
+아이템 수정 Request Body 예시
+include::{snippets}/update-item/request-body.adoc[]
+
+아이템 수정 Response Body 예시
+include::{snippets}/update-item/response-body.adoc[]
+
+아이템 수정 Response Field 예시
+include::{snippets}/update-item/response-fields.adoc[]
+
+---
+
+아이템 삭제 HTTP Request
+include::{snippets}/update-item/http-request.adoc[]
+
+아이템 삭제 HTTP Response 예시
+include::{snippets}/update-item/http-response.adoc[]
+
+아이템 삭제 Request Body 예시
+include::{snippets}/update-item/request-body.adoc[]
+
+아이템 삭제 Response Body 예시
+include::{snippets}/update-item/response-body.adoc[]
+
+아이템 삭제 Response Field 예시
+include::{snippets}/update-item/response-fields.adoc[]
+
+---
+
+== Order 정보 API
+
+주문 추가 HTTP Request 예시
+include::{snippets}/new-order/http-request.adoc[]
+
+주문 추가 HTTP Response 예시
+include::{snippets}/new-order/http-response.adoc[]
+
+주문 추가 Request Body 예시
+include::{snippets}/new-order/request-body.adoc[]
+
+주문 추가 Response Body 예시
+include::{snippets}/new-order/response-body.adoc[]
+
+주문 추가 Response Field 예시
+include::{snippets}/new-order/response-fields.adoc[]
+
+---
+
+주문 상태 조회 HTTP Request 예시
+include::{snippets}/get-orders-orderStatus/http-request.adoc[]
+
+주문 상태로 조회 HTTP Response 예시
+include::{snippets}/get-orders-orderStatus/http-response.adoc[]
+
+주문 상태로 조회 Request Body 예시
+include::{snippets}/get-orders-orderStatus/request-body.adoc[]
+
+주문 상태로 조회 Response Body 예시
+include::{snippets}/get-orders-orderStatus/response-body.adoc[]
+
+주문 상태로 조회 Response Field 예시
+include::{snippets}/get-orders-orderStatus/response-fields.adoc[]
+
+---
+
+주문 아이템으로 조회 HTTP Request 예시
+include::{snippets}/get-orders-itemName/http-request.adoc[]
+
+주문 아이템으로 조회 HTTP Response 예시
+include::{snippets}/get-orders-itemName/http-response.adoc[]
+
+주문 아이템으로 조회 Request Body 예시
+include::{snippets}/get-orders-itemName/request-body.adoc[]
+
+주문 아이템으로 조회 Response Body 예시
+include::{snippets}/get-orders-itemName/response-body.adoc[]
+
+주문 아이템으로 조회 Response Field 예시
+include::{snippets}/get-orders-itemName/response-fields.adoc[]
+
+---
+
+주문 페이징 조회 HTTP Request 예시
+include::{snippets}/paging-orders/http-request.adoc[]
+
+주문 페이징 조회 HTTP Response 예시
+include::{snippets}/paging-orders/http-response.adoc[]
+
+주문 페이징 조회 Request Body 예시
+include::{snippets}/paging-orders/request-body.adoc[]
+
+주문 페이징 조회 Response Body 예시
+include::{snippets}/paging-orders/response-body.adoc[]
+
+---
+
+주문 삭제 HTTP Request 예시
+include::{snippets}/delete-order/http-request.adoc[]
+
+주문 삭제 HTTP Response 예시
+include::{snippets}/delete-order/http-response.adoc[]
+
+주문 삭제 Request Body 예시
+include::{snippets}/delete-order/request-body.adoc[]
+
+주문 삭제 Response Body 예시
+include::{snippets}/delete-order/response-body.adoc[]
+
+주문 삭제 Response Field 예시
+include::{snippets}/delete-order/response-fields.adoc[]
+
+---
+

@@ -1,0 +1,13 @@
+## .properties files ##
+src/main/resources/application.yml
+
+## .properties files ##
+src/main/resources/application-local.yml
+
+## .properties files ##
+src/main/resources/application-dev.yml
+
+## .properties files ##
+src/main/resources/application-test.yml
+
+src/main/resources/application-oauth.yml

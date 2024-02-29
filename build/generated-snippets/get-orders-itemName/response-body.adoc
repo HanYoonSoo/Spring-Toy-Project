@@ -1,0 +1,21 @@
+[source,json,options="nowrap"]
+----
+{
+  "data" : [ {
+    "orderId" : 5,
+    "nickName" : "test",
+    "orderDate" : "2024-02-27T22:21:08.860498",
+    "orderStatus" : "ORDER",
+    "address" : {
+      "city" : "test",
+      "street" : "1234",
+      "zipcode" : "1234"
+    },
+    "orderItems" : [ {
+      "itemName" : "book",
+      "orderPrice" : 1000,
+      "count" : 3
+    } ]
+  } ]
+}
+----

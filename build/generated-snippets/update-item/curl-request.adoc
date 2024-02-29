@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/items/3/edit' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs' \
+    -H 'Refresh: mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA==' \
+    -d '{
+  "name" : "test2",
+  "price" : 2000,
+  "stockQuantity" : 2000
+}'
+----

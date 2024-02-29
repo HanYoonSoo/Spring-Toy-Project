@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.itemId+`
+|`+Number+`
+|아이템 ID
+
+|`+data.name+`
+|`+String+`
+|영화 이름
+
+|`+data.price+`
+|`+Number+`
+|영화 가격
+
+|`+data.stockQuantity+`
+|`+Number+`
+|영화 재고
+
+|`+data.director+`
+|`+String+`
+|영화 감독
+
+|`+data.actor+`
+|`+String+`
+|영화 배우
+
+|===

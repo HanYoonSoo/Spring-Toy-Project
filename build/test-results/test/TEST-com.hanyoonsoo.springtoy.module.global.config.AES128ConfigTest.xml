@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hanyoonsoo.springtoy.module.global.config.AES128ConfigTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-27T13:21:17" hostname="han-yunsuui-MacBookPro.local" time="0.003">
+  <properties/>
+  <testcase name="AES128 암호화 테스트" classname="com.hanyoonsoo.springtoy.module.global.config.AES128ConfigTest" time="0.003"/>
+  <system-out><![CDATA[2024-02-27T22:21:17.640+09:00  INFO 86262 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hanyoonsoo.springtoy.module.global.config.AES128ConfigTest]: AES128ConfigTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-27T22:21:17.659+09:00  INFO 86262 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hanyoonsoo.springtoy.SpringtoyApplication for test class com.hanyoonsoo.springtoy.module.global.config.AES128ConfigTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

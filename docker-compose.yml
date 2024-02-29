@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - my_network
+
+
+  prod:
+    container_name: prod
+    image: hanyoonsoo/docker-test-prod
+    expose:
+      - 8080
+    ports:
+      - 8081:8080
+    environment:
+      - TZ=Asia/Seoul
+    depends_on:
+      - redis
+    networks:
+      - my_network
+
+  dev:
+    container_name: dev
+    image: hanyoonsoo/docker-test-dev2
+    expose:
+      - 8080
+    ports:
+      - 8082:8080
+    environment:
+      TZ: Asia/Seoul
+    depends_on:
+      - redis
+    networks:
+      - my_network
+
+networks:
+  my_network:

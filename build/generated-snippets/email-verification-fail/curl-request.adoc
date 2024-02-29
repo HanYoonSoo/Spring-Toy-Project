@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/users/emails/verifications' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY5LCJpYXQiOjE3MDkwNDAwNjl9.zPzHBgQKHrrcKs5pM2ND9K4LCPFXY5xcXp8aPKA9agk' \
+    -H 'Refresh: mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUkzbJ6NiAUmudLR1PYLQgu6tBTszOfZmb+f8LFxHoVTNnfMYX0ATVg440sdgqguBcts/NH7DyS0e02Ro9JeRKzOlbeXdM6k2MaynUGJdyqguZBrceBclAzDqS46AwahaJog=='
+----

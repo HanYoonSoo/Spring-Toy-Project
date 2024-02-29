@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+data[]+`
+|`+Array+`
+|결과 데이터
+
+|`+data[].imageUrl+`
+|`+String+`
+|이미지 URL
+
+|===

@@ -1,0 +1,10 @@
+[source,json,options="nowrap"]
+----
+{
+  "name" : "book",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "author" : "book",
+  "isbn" : "book"
+}
+----

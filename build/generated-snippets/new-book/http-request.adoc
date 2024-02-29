@@ -1,0 +1,17 @@
+[source,http,options="nowrap"]
+----
+POST /items/new/book HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY4LCJpYXQiOjE3MDkwNDAwNjh9.SS2MoO_67jpv3V6Or6MubShiDflnMI-NYG-_K9xoQzs
+Refresh: mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2FeJAcZ3hj4t0SxQ+1yMfLX9//0xT2ErBFpfNtQD9ZZzrC14Q/IccPncll0nB2OMHIHlodPUxF6V1CHabk2cqcE01cnKOfTLoFex2BoHTRbK+CZDTKb79smw09eBu0LyA==
+Content-Length: 105
+Host: localhost:8080
+
+{
+  "name" : "book",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "author" : "book",
+  "isbn" : "book"
+}
+----

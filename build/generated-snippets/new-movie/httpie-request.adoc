@@ -1,0 +1,13 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "movie",
+  "price" : 1000,
+  "stockQuantity" : 1000,
+  "director" : "movie",
+  "actor" : "movie"
+}' | http POST 'http://localhost:8080/items/new/movie' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiUk9MRV9VU0VSIiwic3ViIjoiZW1haWxAZ21haWwuY29tIiwiZXhwIjoxNzA5MDQxODY3LCJpYXQiOjE3MDkwNDAwNjd9.dZE1Jp5jtRgeFPvAW0MY8JLi57L8sO1bWRiHx5dz6KQ' \
+    'Refresh:mduTF4EuFaiFfuccsGeUP8Y41zFbXUSY65S492olzgMUS/UaNKNDq10zHRYJz71NbIrwqPCn4suf2rW2trjUk2Y5eaAChHKHBablzOF/kiquUuZ9nfMj4wptCjmmhdY8upVzghUnRBbkxahcwVjd2Cg1O9hxVF1vMjNYd+j/kRALPgGszpWebMNN7/RqpfNgwTDeyy1lLloAO0XAw0slcw=='
+----
