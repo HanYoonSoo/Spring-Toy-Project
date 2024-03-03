@@ -22,6 +22,10 @@ Spring Rest Docs를 활용한 테스트 코드 개발(AsciiDoctor)
 + Docker + Github actions CI/CD
 + Spring Rest Docs
 
+# Project Architecture
+프로젝트 아키텍처
+<img width="1009" alt="스크린샷 2024-03-03 오후 3 41 58" src="https://github.com/HanYoonSoo/Spring-Toy-Project/assets/114587653/a57af98a-d824-4039-b4d8-95e4483fb8b4">
+
 # ERD
 <https://dbdiagram.io/d/ToyProject-65bc90f1ac844320ae493fa3>
 
@@ -89,7 +93,7 @@ __기본 세팅__<br>
 __Spring Security 설명 및 구현__<br>
 <https://hdbstn3055.tistory.com/25>
 
-__테스트 코드 작성__<br>
+__테스트 코드 및 예외처리 코드 작성__<br>
 <https://hdbstn3055.tistory.com/31>
 
 __이메일 인증__<br>
