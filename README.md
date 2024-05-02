@@ -111,10 +111,3 @@ __AWS S3 이미지 업로드/수정/삭제__<br>
 __Mock 객체 사용 S3 테스트 코드 작성__<br>
 <https://hdbstn3055.tistory.com/37>
 
-
-
-
-
-
-
-
